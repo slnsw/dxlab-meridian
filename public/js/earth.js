@@ -1,17 +1,17 @@
 // Created by Bjorn Sandvik - thematicmapping.org
 (function () {
 
-	var globeSlug = getQueryVariable('globe');
+	var globeSlug = getQueryVariable('globe') ? getQueryVariable('globe') : 'miranda';
 
 	var globeConfigs = {
 		'coronelli': {
-			'map': '../images/10070028-Coronelli-David-Rumsey-3000px.jpg',
-			'bumpMap': '../images/10070028-Coronelli-David-Rumsey-3000px-bump.jpg',
+			'map': './images/10070028-Coronelli-David-Rumsey-3000px.jpg',
+			'bumpMap': './images/10070028-Coronelli-David-Rumsey-3000px-bump.jpg',
 			'bumpScale': 0.0005
 		},
 		'miranda': {
-			'map': '../images/a127057u_crop.jpg',
-			'bumpMap': '../images/a127057u_bump.jpg',
+			'map': './images/a127057u_crop.jpg',
+			'bumpMap': './images/a127057u_bump.jpg',
 			'bumpScale': 0.001
 		}
 	}
@@ -94,7 +94,7 @@
 		return new THREE.Mesh(
 			new THREE.SphereGeometry(radius + 0.003, segments, segments),
 			new THREE.MeshPhongMaterial({
-				map:         THREE.ImageUtils.loadTexture('../images/fair_clouds_4k.png'),
+				map:         THREE.ImageUtils.loadTexture('./images/fair_clouds_4k.png'),
 				transparent: true
 			})
 		);
@@ -104,7 +104,7 @@
 		return new THREE.Mesh(
 			new THREE.SphereGeometry(radius, segments, segments),
 			new THREE.MeshBasicMaterial({
-				map:  THREE.ImageUtils.loadTexture('../images/galaxy_starfield.png'),
+				map:  THREE.ImageUtils.loadTexture('./images/galaxy_starfield.png'),
 				side: THREE.BackSide
 			})
 		);
