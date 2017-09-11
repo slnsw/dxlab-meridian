@@ -1,6 +1,25 @@
 // Created by Bjorn Sandvik - thematicmapping.org
 (function () {
 
+	var globeSlug = getQueryVariable('globe');
+
+	var globeConfigs = {
+		'coronelli': {
+			'map': '../images/10070028-Coronelli-David-Rumsey-3000px.jpg',
+			'bumpMap': '../images/10070028-Coronelli-David-Rumsey-3000px-bump.jpg',
+			'bumpScale': 0.0005
+		},
+		'miranda': {
+			'map': '../images/a127057u_crop.jpg',
+			'bumpMap': '../images/a127057u_bump.jpg',
+			'bumpScale': 0.001
+		}
+	}
+
+	var globeConfig = globeConfigs[globeSlug];
+
+
+
 	var webglEl = document.getElementById('webgl');
 
 	if (!Detector.webgl) {
@@ -59,12 +78,12 @@
 		return new THREE.Mesh(
 			new THREE.SphereGeometry(radius, segments, segments),
 			new THREE.MeshPhongMaterial({
-				map:         THREE.ImageUtils.loadTexture('../images/10070028-Coronelli-David-Rumsey-3000px.jpg'),
+				map:         THREE.ImageUtils.loadTexture(globeConfig.map),
 				// map:         THREE.ImageUtils.loadTexture('../images/6900023-Pardies-David-Rumsey.jpg'),
 				// bumpMap:     THREE.ImageUtils.loadTexture('../images/a127057u_bump.jpg'),
-				bumpMap: THREE.ImageUtils.loadTexture('../images/10070028-Coronelli-David-Rumsey-3000px-bump.jpg'),
+				bumpMap: THREE.ImageUtils.loadTexture(globeConfig.bumpMap),
 				// bumpScale:   0.002,
-				bumpScale: 0.0005,
+				bumpScale: globeConfig.bumpScale,
 				// specularMap: THREE.ImageUtils.loadTexture('images/water_4k.png'),
 				specular:    new THREE.Color('grey')
 			})
@@ -89,6 +108,16 @@
 				side: THREE.BackSide
 			})
 		);
+	}
+
+	function getQueryVariable(variable) {
+     var query = window.location.search.substring(1);
+     var vars = query.split("&");
+     for (var i=0;i<vars.length;i++) {
+             var pair = vars[i].split("=");
+             if(pair[0] == variable){return pair[1];}
+     }
+     return(false);
 	}
 
 }());
