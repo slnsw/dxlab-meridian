@@ -2,3 +2,5 @@ node_modules/
 .DS_Store
 .git
 npm-debug.log
+public/images/Miranda_Map_Working_Wraparound_15000px.png
+public/images/Miranda_Map_Working_Wraparound.png
