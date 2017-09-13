@@ -12,7 +12,7 @@
 		},
 		miranda: {
 			// 'map': './images/a127057u_crop.jpg',
-			map: './images/Miranda_Map_Working_Wraparound_Composite_4000px.png',
+			map: './images/Miranda_Map_Working_Wraparound_Composite_4000px.jpg',
 			bumpMap: './images/Miranda_Map_Working_Wraparound_Composite_4000px_bump.gif',
 			bumpScale: 0.001
 		}
@@ -69,7 +69,7 @@
 	function render() {
 		controls.update();
 		sphere.rotation.y += 0.0005;
-		clouds.rotation.y += 0.0005;
+		// clouds.rotation.y += 0.0005;
 		requestAnimationFrame(render);
 		renderer.render(scene, camera);
 	}
