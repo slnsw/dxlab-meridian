@@ -12,9 +12,9 @@
 		},
 		miranda: {
 			// 'map': './images/a127057u_crop.jpg',
-			map: './images/Miranda_Map_Working_Wraparound_Composite_4000px.jpg',
-			bumpMap: './images/Miranda_Map_Working_Wraparound_Composite_4000px_bump.gif',
-			bumpScale: 0.001
+			map: './images/Miranda_Map_Working_Wraparound_Composite2_4000px.jpg',
+			bumpMap: './images/Miranda_Map_Working_Wraparound_Composite2_4000px_bump.gif',
+			bumpScale: 0.0008
 		}
 	};
 
@@ -45,7 +45,7 @@
 
 	scene.add(new THREE.AmbientLight(0x333333));
 
-	var light = new THREE.DirectionalLight(0xffffff, 0.8);
+	var light = new THREE.DirectionalLight(0xffffff, 0.7);
 	light.position.set(5, 3, 5);
 	scene.add(light);
 
