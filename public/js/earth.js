@@ -1,5 +1,22 @@
 // Created by Bjorn Sandvik - thematicmapping.org
 (function() {
+	var example2 = new Vue({
+	  el: '#example-2',
+	  data: {
+	    name: 'Vue.js'
+	  },
+	  // define methods under the `methods` object
+	  methods: {
+	    greet: function (event) {
+
+				var sphere1 = createSphere(0.5, 32, globeConfigs['coronelli'].map, globeConfigs['coronelli'].bumpMap, globeConfigs['coronelli'].bumpScale);
+				// sphere.rotation.y = rotation;
+				scene.remove(sphere);
+				scene.add(sphere1);
+	    }
+	  }
+	})
+
 	var globeSlug = getQueryVariable('globe')
 		? getQueryVariable('globe')
 		: 'miranda';
@@ -13,7 +30,8 @@
 		miranda: {
 			// 'map': './images/a127057u_crop.jpg',
 			map: './images/Miranda_Map_Working_Wraparound_Composite2_4000px.jpg',
-			bumpMap: './images/Miranda_Map_Working_Wraparound_Composite2_4000px_bump.gif',
+			bumpMap:
+				'./images/Miranda_Map_Working_Wraparound_Composite2_4000px_bump.gif',
 			bumpScale: 0.0008
 		}
 	};
@@ -49,7 +67,7 @@
 	light.position.set(5, 3, 5);
 	scene.add(light);
 
-	var sphere = createSphere(radius, segments);
+	var sphere = createSphere(radius, segments, globeConfig.map, globeConfig.bumpMap, globeConfig.bumpScale);
 	sphere.rotation.y = rotation;
 	scene.add(sphere);
 
@@ -74,16 +92,16 @@
 		renderer.render(scene, camera);
 	}
 
-	function createSphere(radius, segments) {
+	function createSphere(radius, segments, map, bumpMap, bumpScale) {
 		return new THREE.Mesh(
 			new THREE.SphereGeometry(radius, segments, segments),
 			new THREE.MeshPhongMaterial({
-				map: THREE.ImageUtils.loadTexture(globeConfig.map),
+				map: THREE.ImageUtils.loadTexture(map),
 				// map:         THREE.ImageUtils.loadTexture('../images/6900023-Pardies-David-Rumsey.jpg'),
 				// bumpMap:     THREE.ImageUtils.loadTexture('../images/a127057u_bump.jpg'),
-				bumpMap: THREE.ImageUtils.loadTexture(globeConfig.bumpMap),
+				bumpMap: THREE.ImageUtils.loadTexture(bumpMap),
 				// bumpScale:   0.002,
-				bumpScale: globeConfig.bumpScale,
+				bumpScale: bumpScale,
 				// specularMap: THREE.ImageUtils.loadTexture('images/water_4k.png'),
 				specular: new THREE.Color('grey')
 			})
