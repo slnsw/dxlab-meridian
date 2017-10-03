@@ -1,14 +1,17 @@
 (function() {
 	// Get current globe slug from URL
-	var globeSlug = getQueryVariable('globe')
+	var globeKey = getQueryVariable('globe')
 		? getQueryVariable('globe')
 		: 'miranda';
 
-	// Globe params
+	// Params
 	var radius = 0.5;
 	var	segments = 32;
 	var	rotation = 0;
+	var width = window.innerWidth;
+	var height = window.innerHeight;
 
+	// Globe configurations
 	var globeConfigs = {
 		miranda: {
 			name: 'Miranda',
@@ -29,31 +32,32 @@
 		}
 	};
 
+	// Set up Vue instance
 	var vueApp = new Vue({
 	  el: '#app',
 	  data: {
 	    items: globeConfigs,
-			globeSlug: globeSlug
+			globeKey: globeKey
 	  },
 	  methods: {
-	    changeGlobe: function (newGlobeSlug) {
-				scene.remove(spheres[this.$data.globeSlug]);
-				scene.add(spheres[newGlobeSlug]);
-				this.$data.globeSlug = newGlobeSlug;
-				globeSlug = newGlobeSlug;
+	    changeGlobe: function (newGlobeKey) {
+				// Remove old globe, add new globe
+				scene.remove(spheres[this.$data.globeKey]);
+				scene.add(spheres[newGlobeKey]);
+
+				this.$data.globeKey = newGlobeKey;
+				globeKey = newGlobeKey;
 	    }
 	  }
 	})
 
+	// Set up Three JS scene and objects
 	var webglEl = document.getElementById('webgl');
 
 	if (!Detector.webgl) {
 		Detector.addGetWebGLMessage(webglEl);
 		return;
 	}
-
-	var width = window.innerWidth;
-	var height = window.innerHeight;
 
 	var scene = new THREE.Scene();
 
@@ -71,8 +75,8 @@
 
 	var spheres = createSpheres(globeConfigs);
 
-	spheres[globeSlug].rotation.y = rotation;
-	scene.add(spheres[globeSlug]);
+	spheres[globeKey].rotation.y = rotation;
+	scene.add(spheres[globeKey]);
 
 	var stars = createStars(90, 64);
 	scene.add(stars);
@@ -83,9 +87,10 @@
 
 	render();
 
+	// Functions
 	function render() {
 		controls.update();
-		spheres[globeSlug].rotation.y += 0.0005;
+		spheres[globeKey].rotation.y += 0.0005;
 
 		requestAnimationFrame(render);
 		renderer.render(scene, camera);

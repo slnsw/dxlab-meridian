@@ -15,6 +15,9 @@
 			}
 
 			#app {
+			}
+
+			Header {
 				position: absolute;
 				top: 3em;
 				left: 3em;
@@ -24,34 +27,64 @@
 				width: 100px;
 			}
 
-			.button-change-globe.active {
-				color: pink;
+			.menu {
+				margin-top: 1em;
+			}
+
+			.menu__divider {
+				border-top: 1px solid #EEE;
+				width: 1em;
+				margin-bottom: 1em;
 			}
 
 			.button-change-globe {
+				display: block;
 				border: none;
 				background-color: transparent;
 				font-family: 'Lekton', sans-serif;
 				color: #EEE;
+				font-size: 0.8em;
+				padding-left: 0;
+			}
+
+			.button-change-globe.active {
+				color: #ed0180;
+			}
+
+			.more-info {
+				position: absolute;
+				bottom: 3em;
+				right: 3em;
+				text-transform: uppercase;
+				border: 1px solid #EEE;
+				padding: 0.5em;
+				font-size: 1em;
 			}
 
 			.webgl-error { font: 15px/30px monospace; text-align: center; color: #fff; margin: 50px; }
 			.webgl-error a { color: #fff; }
 	  </style>
 	</head>
-	
+
 	<body>
 		<div id="app">
-			<img class="logo-dxlab" src="./images/DX_Lab_Logo_FA_White.png" alt="DX Lab logo" /><br/>
+			<Header>
+				<img class="logo-dxlab" src="./images/DX_Lab_Logo_FA_White.png" alt="DX Lab logo" /><br/>
 
-			<button
-				class="button-change-globe"
-				v-bind:class="{ active: globeSlug === slug }"
-				v-for="(item, slug) in items"
-				v-on:click="changeGlobe(slug)"
-			>
-				{{ item.name }}
-			</button>
+				<div class="menu">
+					<div class="menu__divider"></div>
+					<button
+						class="button-change-globe"
+						v-bind:class="{ active: globeKey === key }"
+						v-for="(item, key) in items"
+						v-on:click="changeGlobe(key)"
+					>
+						{{ item.name }}
+					</button>
+				</div>
+			</Header>
+
+			<div class="more-info">More info</div>
 		</div>
 		<div id="webgl"></div>
 
