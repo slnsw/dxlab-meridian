@@ -39,19 +39,20 @@
 					<div class="modal__content">
 						<h1>{{ items[globeKey].name }}</h1>
 						<div class="heading-divider"></div>
-						<p>{{ items[globeKey].content }}</p>
+						<div v-html="items[globeKey].content"></div>
 					</div>
+
+					<a v-bind:href="items[globeKey].url" class="button content-button">View record</a>
 				</div>
 			</transition>
 
 			<button
-				class="modal-button"
+				class="button modal-button"
 				v-on:click="toggleModal"
 			>
 				<span v-if="isModalOpen">Close</span>
 				<span v-else="!isModalOpen">More info</span>
 			</button>
-
 		</div>
 
 		<div id="webgl"></div>

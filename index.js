@@ -16,7 +16,7 @@ if (process.env.ENV === 'development') {
   const browserSync = require('browser-sync');
   browserSync({
     server: 'public',
-    files: ['public/js/*.js', 'public/*.html'],
+    files: ['public/**.*'],
     open: false
   });
 }
