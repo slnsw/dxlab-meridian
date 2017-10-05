@@ -3,129 +3,18 @@
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<title>Medieval Globes | DX Lab</title>
-		<link href="https://fonts.googleapis.com/css?family=Lekton:400,400i,700" rel="stylesheet">
-		<style>
-			* {
-				box-sizing: border-box;
-			}
-
-			body {
-				margin: 0;
-				overflow: hidden;
-				background-color: #000;
-				font-family: 'Lekton', sans-serif;
-				letter-spacing: -0.02em;
-				color: #EEE;
-			}
-
-			#app {
-				position: absolute;
-				width: 100%;
-				height: 100%;
-				padding: 3em;
-			}
-
-			header {
-			}
-
-			button {
-				border: none;
-				background-color: transparent;
-				font-family: 'Lekton', sans-serif;
-				color: #EEE;
-			}
-
-			.logo-dxlab {
-				width: 100px;
-			}
-
-			.logo-slnsw {
-				width: 150px;
-				position: absolute;
-				bottom: 3em;
-				left: 3em;
-			}
-
-			.menu {
-				margin-top: 1em;
-			}
-
-			.menu__divider {
-				border-top: 1px solid #EEE;
-				width: 1em;
-				margin-bottom: 1em;
-			}
-
-			.button-change-globe {
-				display: block;
-				border: none;
-				background-color: transparent;
-				font-family: 'Lekton', sans-serif;
-				color: #EEE;
-				font-size: 0.8em;
-				padding-left: 0;
-			}
-
-			.button-change-globe.active {
-				color: #ed0180;
-			}
-
-			.more-info {
-				position: absolute;
-				top: 3em;
-				right: 3em;
-				width: 6em;
-				text-transform: uppercase;
-				border: 1px solid #EEE;
-				background-color: black;
-				padding: 0.5em;
-				font-size: 1em;
-				text-align: center;
-			}
-
-			.modal {
-				position: absolute;
-				top: 3em;
-				right: 3em;
-				padding: 1em;
-				width: 50%;
-				height: 50%;
-				opacity: 1;
-				overflow: hidden;
-				background-color: rgba(0, 0, 0, 0.8);
-				/*background-color: red;*/
-				border: 1px solid #EEE;
-				box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.8);
-			}
-
-			.animate-enter-active, .animate-leave-active {
-				transition-timing-function: ease-in-out;
-			  transition: .5s;
-			}
-			.animate-enter, .animate-leave-to /* .fade-leave-active below version 2.1.8 */ {
-			  width: 6em;
-				height: 1em;
-				opacity: 0.8;
-			}
-
-				.modal__content h1 {
-					margin-top: 0;
-					/*display: none;*/
-				}
-
-			.webgl-error { font: 15px/30px monospace; text-align: center; color: #fff; margin: 50px; }
-			.webgl-error a { color: #fff; }
-	  </style>
+		<title>Medieval Globes | DX Lab - State Library of NSW</title>
+		<link href="https://fonts.googleapis.com/css?family=Lekton:400,400i,700" rel="stylesheet" />
+		<link href="/styles/styles.css" rel="stylesheet" />
 	</head>
 
 	<body>
 		<div id="app">
 			<header>
-				<img class="logo-dxlab" src="./images/DX_Lab_Logo_FA_White.png" alt="DX Lab logo" /><br/>
+				<a href="http://dxlab.sl.nsw.gov.au"><img class="logo-dxlab" src="./images/DX_Lab_Logo_FA_White.png" alt="DX Lab website" /></a><br/>
 
 				<div class="menu">
-					<div class="menu__divider"></div>
+					<div class="heading-divider"></div>
 					<button
 						class="button-change-globe"
 						v-bind:class="{ active: globeKey === key }"
@@ -138,10 +27,10 @@
 
 			</header>
 
-			<img class="logo-slnsw" src="./images/logo-slnsw-white-digital.png" alt="State Library of NSW" />
+			<a href="http://sl.nsw.gov.au"><img class="logo-slnsw" src="./images/logo-slnsw-white-digital.png" alt="State Library of NSW website" /></a>
 
 			<transition
-				name="animate"
+				name="modal-animation"
 			>
 				<div
 					class="modal"
@@ -149,13 +38,14 @@
 				>
 					<div class="modal__content">
 						<h1>{{ items[globeKey].name }}</h1>
+						<div class="heading-divider"></div>
 						<p>{{ items[globeKey].content }}</p>
 					</div>
 				</div>
 			</transition>
 
 			<button
-				class="more-info"
+				class="modal-button"
 				v-on:click="toggleModal"
 			>
 				<span v-if="isModalOpen">Close</span>
