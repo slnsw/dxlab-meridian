@@ -46,23 +46,26 @@
 	  },
 	  methods: {
 			changeGlobe: function (newGlobeKey) {
-				var oldGlobe = spheres[this.$data.globeKey];
+				var oldGlobeKey = this.$data.globeKey
+				var oldGlobe = spheres[oldGlobeKey];
 				var newGlobe = spheres[newGlobeKey];
 
-				newGlobe.material.opacity = 1;
-				oldGlobe.material.transparent = true;
-				newGlobe.material.transparent = true;
+				if (oldGlobeKey !== newGlobeKey) {
+					newGlobe.material.opacity = 1;
+					oldGlobe.material.transparent = true;
+					newGlobe.material.transparent = true;
 
-				scene.add(spheres[newGlobeKey]);
+					scene.add(spheres[newGlobeKey]);
 
-				TweenLite.to(oldGlobe.material, 0.2, {opacity: 0, onComplete: function() {
-					scene.remove(oldGlobe);
-				}});
+					// Animate globes
+					TweenLite.to(oldGlobe.material, 0.2, { opacity: 0, onComplete: function() {
+						scene.remove(oldGlobe);
+					}});
+					TweenLite.from(newGlobe.material, 0.2, { opacity: 0, delay: 0.2 });
 
-				TweenLite.from(newGlobe.material, 0.2, {opacity: 0, delay: 0.2});
-
-				this.$data.globeKey = newGlobeKey;
-				globeKey = newGlobeKey;
+					this.$data.globeKey = newGlobeKey;
+					globeKey = newGlobeKey;
+				}
 	    },
 			toggleModal: function(event) {
 				this.$data.isModalOpen = !this.$data.isModalOpen;
