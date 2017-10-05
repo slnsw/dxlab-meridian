@@ -17,9 +17,9 @@
 			name: 'Miranda',
 			radius: radius,
 			segments: segments,
-			map: './images/Miranda_Map_Working_Wraparound_Composite2_4000px.jpg',
+			map: '/images/Miranda_Map_Working_Wraparound_Composite2_4000px.jpg',
 			bumpMap:
-				'./images/Miranda_Map_Working_Wraparound_Composite2_4000px_bump.gif',
+				'/images/Miranda_Map_Working_Wraparound_Composite2_4000px_bump.gif',
 			bumpScale: 0.0008,
 			content: '<p>Richly decorated showing saints, Atlas, ships, views, cartouches, flags, and heraldic devices. The large land mass "Terra de Iesso Ieco" (now Hokkaido) originated with Maarten Vries in 1643. [According to him, &quot;Landt van Eso\' to the north of Kyushu was separated by Staten Eylant (Kunashir) and De Vries\' Strait from \'Compagnies Land\' (Iturup)]. Iesso or Terra Esonis continued to be shown on French, Dutch, Spanish and Italian maps from 1660 to well after 1700 before becoming part of Alaska.</p>',
 			url: 'http://digital.sl.nsw.gov.au/delivery/DeliveryManagerServlet?embedded=true&toolbar=false&dps_pid=IE3538803'
@@ -28,8 +28,8 @@
 			name: 'Coronelli Terrestrial',
 			radius: radius,
 			segments: segments,
-			map: './images/10070028-Coronelli-David-Rumsey-3000px.jpg',
-			bumpMap: './images/10070028-Coronelli-David-Rumsey-3000px-bump.jpg',
+			map: '/images/10070028-Coronelli-David-Rumsey-3000px.jpg',
+			bumpMap: '/images/10070028-Coronelli-David-Rumsey-3000px-bump.jpg',
 			bumpScale: 0.0005,
 			content: '<p>Coronelli\'s portrait incl. parchment with "Atlante Veneto" [1690 - 1696]; this terrestrial set dated 1688 is therefore contemporary with the accompanying Celestial globe gore set which is dated 1693.</p><p>Includes text and illustrations. Relief shown pictorially.</p><p>This illustrated globe is amongst the largest printed, and contains up-to date discoveries by La Salle and Chaumont. The large and small medallions near the dedication to Cardinal Cesare D\'Estrees dated 1688 are blank.</p>',
 			url: 'http://digital.sl.nsw.gov.au/delivery/DeliveryManagerServlet?embedded=true&toolbar=false&dps_pid=IE3775803'
@@ -67,6 +67,11 @@
 
 					this.$data.globeKey = newGlobeKey;
 					globeKey = newGlobeKey;
+
+		      if (history.pushState) {
+	          var newurl = window.location.protocol + "//" + window.location.host + window.location.pathname + '?globe=' + newGlobeKey;
+	          window.history.pushState({path:newurl},'',newurl);
+		      }
 				}
 	    },
 			toggleModal: function(event) {
@@ -155,7 +160,7 @@
 		return new THREE.Mesh(
 			new THREE.SphereGeometry(radius, segments, segments),
 			new THREE.MeshBasicMaterial({
-				map: THREE.ImageUtils.loadTexture('./images/galaxy_starfield.png'),
+				map: THREE.ImageUtils.loadTexture('/images/galaxy_starfield.png'),
 				side: THREE.BackSide
 			})
 		);
