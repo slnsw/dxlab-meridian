@@ -9,7 +9,7 @@ body {
   overflow: hidden;
   background-color: #000;
   font-family: 'Lekton', sans-serif;
-  letter-spacing: -0.02em;
+  /*letter-spacing: -0.02em;*/
   color: #EEE;
   line-height: 1.4;
 }
@@ -112,7 +112,7 @@ button {
   position: absolute;
   top: 1.25em;
   right: 1.25em;
-  width: 6em;
+  width: 8em;
   background-color: rgba(0, 0, 0, 0.8);
   font-size: 0.8em;
 }
