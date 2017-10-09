@@ -71,7 +71,7 @@ button {
 .heading-divider {
   border-top: 1px solid #EEE;
   width: 1em;
-  margin-top: -0.5em;
+  margin-top: 0.3em;
   margin-bottom: 1em;
 }
 
@@ -96,6 +96,7 @@ button {
   text-align: center;
   text-transform: uppercase;
   font-size: 1em;
+  letter-spacing: 0.2em;
 }
 
   .button:link, .button:visited {
@@ -125,10 +126,17 @@ button {
 
 .content-button {
   position: absolute;
-  bottom: 2em;
-  right: 2em;
+  bottom: 1em;
+  right: 1em;
   display: block;
   width: 40%;
+}
+
+@media(min-width: 40em) {
+  .content-button {
+    bottom: 2em;
+    right: 2em;
+  }
 }
 
 .modal {
@@ -168,8 +176,10 @@ button {
 
   .modal__content h1 {
     margin-top: 0;
-    font-size: 1.4em;
-    max-width: calc(100% - 4em);
+    margin-bottom: 0.4em;
+    font-size: 2em;
+    max-width: calc(100% - 2em);
+    line-height: 1.2;
     /*display: none;*/
   }
 
@@ -182,6 +192,7 @@ button {
   .modal__field {
     text-transform: uppercase;
     font-size: 0.8em;
+    letter-spacing: 2px;
     margin-bottom: 0;
     padding-bottom: 0;
   }

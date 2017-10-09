@@ -7,7 +7,7 @@
 	// Params
 	var radius = 0.5;
 	var	segments = 32;
-	var	rotation = 0;
+	var	rotation = 15;
 	var width = window.innerWidth;
 	var height = window.innerHeight;
 
@@ -98,11 +98,12 @@
 	var scene = new THREE.Scene();
 	scene.add(new THREE.AmbientLight(0x333333));
 
-	// console.log();
+	// Make camera position responsive to browser width
 	var cameraDepth = (1/width * 10000) + 40;
 
 	var camera = new THREE.PerspectiveCamera(cameraDepth, width / height, 0.01, 1000);
 	camera.position.z = 1.5;
+	camera.position.y = 0.2;
 
 	var renderer = new THREE.WebGLRenderer();
 	renderer.setSize(width, height);

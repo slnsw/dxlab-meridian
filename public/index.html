@@ -12,10 +12,10 @@
 		<div id="app">
 			<header>
 				<a href="http://dxlab.sl.nsw.gov.au"><img class="logo-dxlab" src="/images/DX_Lab_Logo_FA_White.png" alt="DX Lab website" /></a><br/>
+				<h1 style="margin-top: 0.1em; font-size: 0.8em; font-weight: 400; letter-spacing: 0.2em; text-transform: uppercase; margin-bottom: 0em;">Medieval Globes</h1>
+				<div class="heading-divider"></div>
 
 				<div class="menu">
-					<div class="heading-divider"></div>
-					<h1 style="margin-top: 0; font-size: 1em; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 0;">Meridian</h1>
 					<button
 						class="button-change-globe"
 						v-bind:class="{ active: globeKey === key }"
@@ -41,9 +41,9 @@
 				>
 					<div class="modal__content">
 						<h1>{{ items[globeKey].name }}</h1>
-						<div class="heading-divider"></div>
 						<div class="modal__field">Year: {{ items[globeKey].year }}</div>
 						<div class="modal__field">Language: {{ items[globeKey].language }}</div>
+						<div class="heading-divider"></div>
 						<div v-html="items[globeKey].content"></div>
 					</div>
 
@@ -57,7 +57,7 @@
 				v-cloak
 			>
 				<span v-if="isModalOpen">Close</span>
-				<span v-else="!isModalOpen">More info</span>
+				<span v-else="!isModalOpen">More</span>
 			</button>
 		</div>
 
