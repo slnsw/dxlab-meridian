@@ -146,10 +146,14 @@ button {
 
 .about-button {
   position: absolute;
-  z-index: 5;
+  z-index: 25;
   bottom: 1.25em;
   right: 1.25em;
   font-size: 0.8em;
+}
+
+.about-button--is-hidden {
+  z-index: 1;
 }
 
 @media(min-width: 40em) {
@@ -159,12 +163,17 @@ button {
   }
 }
 
+.about-modal-button {
+  top: -1px;
+  right: -1px;
+}
+
 .modal {
   position: absolute;
   z-index: 10;
   top: 1em;
   right: 1em;
-  padding: 1em;
+  padding: 3em 1em;
   width: calc(100% - 2em);
   height: calc(100% - 2em);
   opacity: 1;
@@ -186,14 +195,21 @@ button {
 }
 
 .about-modal {
-  z-index: 1;
+  z-index: 25;
   top: inherit;
-  bottom: 3em;
+  bottom: 1em;
 }
+
+  @media(min-width: 40em) {
+    .about-modal {
+      bottom: 3em;
+    }
+  }
 
 .modal-animation-enter-active, .modal-animation-leave-active {
   transition: all .5s cubic-bezier(0.86, 0, 0.07, 1);
 }
+
 .modal-animation-enter, .modal-animation-leave-to /* .fade-leave-active below version 2.1.8 */ {
   width: 6em;
   height: 1em;

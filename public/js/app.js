@@ -51,7 +51,7 @@
 			content: null,
 			year: null,
 			language: null,
-			isModalOpen: false,
+			isMoreModalOpen: false,
 			isAboutModalOpen: false,
 	  },
 	  methods: {
@@ -82,11 +82,13 @@
 		      }
 				}
 	    },
-			toggleModal: function(event) {
-				this.$data.isModalOpen = !this.$data.isModalOpen;
+			toggleMoreModal: function(event) {
+				this.$data.isMoreModalOpen = !this.$data.isMoreModalOpen;
+				this.$data.isAboutModalOpen = false;
 			},
 			toggleAboutModal: function(event) {
 				this.$data.isAboutModalOpen = !this.$data.isAboutModalOpen;
+				this.$data.isMoreModalOpen = false;
 			}
 	  }
 	})
@@ -205,53 +207,37 @@
 
 	/* Fade mesh */
 	function fadeMesh(mesh, direction, options) {
-	    options = options || {};
-	    // set and check
-	    var current = { percentage : direction == "in" ? 1 : 0 },
-	    // this check is used to work with normal and multi materials.
-	    mats = mesh.material.materials ?
-	             mesh.material.materials : [mesh.material],
+    options = options || {};
+    // set and check
+    var current = { percentage : direction == "in" ? 1 : 0 },
+    // this check is used to work with normal and multi materials.
+    mats = mesh.material.materials ?
+             mesh.material.materials : [mesh.material],
 
-	     originals = mesh.userData.originalOpacities,
-	     easing = options.easing || TWEEN.Easing.Linear.None,
-	     duration = options.duration || 2000;
-	    // check to make sure originals exist
-	    if( !originals ) {
-	         console.error("Fade error: originalOpacities not defined, use trackOriginalOpacities");
-	          return;
-	    }
-	    // tween opacity back to originals
-	    var tweenOpacity = new TWEEN.Tween(current)
-	        .to({ percentage: direction == "in" ? 0 : 1 }, duration)
-	        .easing(easing)
-	        .onUpdate(function() {
-	             for (var i = 0; i < mats.length; i++) {
-	                mats[i].opacity = originals[i] * current.percentage;
-	             }
-	         })
-	         .onComplete(function(){
-	              if(options.callback){
-	                   options.callback();
-	              }
-	         });
-	    tweenOpacity.start();
-	    return tweenOpacity;
+     originals = mesh.userData.originalOpacities,
+     easing = options.easing || TWEEN.Easing.Linear.None,
+     duration = options.duration || 2000;
+    // check to make sure originals exist
+    if( !originals ) {
+         console.error("Fade error: originalOpacities not defined, use trackOriginalOpacities");
+          return;
+    }
+    // tween opacity back to originals
+    var tweenOpacity = new TWEEN.Tween(current)
+      .to({ percentage: direction == "in" ? 0 : 1 }, duration)
+      .easing(easing)
+      .onUpdate(function() {
+           for (var i = 0; i < mats.length; i++) {
+              mats[i].opacity = originals[i] * current.percentage;
+           }
+       })
+       .onComplete(function(){
+            if(options.callback){
+                 options.callback();
+            }
+       });
+    tweenOpacity.start();
+    return tweenOpacity;
 	}
 
-	/* How to use */
-	// fade in
-	// fadeMesh(mesh, "in");
-	// // fade out
-	// fadeMesh(mesh, "out");
-	// // fade with options
-	// fadeMesh(mesh, "in", {
-	//
-	//     duration: 11000,
-	//
-	//     easing: TWEEN.Easing.Quintic.InOut,
-	//
-	//     callback : function (){
-	//         console.log("Fade complete");
-	//     }
-	// });
 })();

@@ -52,7 +52,7 @@
 			>
 				<div
 					class="modal"
-					v-if="isModalOpen"
+					v-if="isMoreModalOpen"
 					v-cloak
 				>
 					<div class="modal__content">
@@ -76,7 +76,17 @@
 					v-cloak
 				>
 					<div class="modal__content">
+						<button
+							class="button modal-button about-modal-button"
+							v-on:click="toggleAboutModal"
+							v-if="isAboutModalOpen"
+							v-cloak
+						>
+							<span>Close</span>
+						</button>
+
 						<h1>About</h1>
+						<div class="heading-divider"></div>
 						<p>About this project.</p>
 					</div>
 				</div>
@@ -84,15 +94,16 @@
 
 			<button
 				class="button modal-button"
-				v-on:click="toggleModal"
+				v-on:click="toggleMoreModal"
 				v-cloak
 			>
-				<span v-if="isModalOpen">Close</span>
-				<span v-else="!isModalOpen">More info</span>
+				<span v-if="isMoreModalOpen">Close</span>
+				<span v-else="!isMoreModalOpen">More info</span>
 			</button>
 
 			<button
 				class="button about-button"
+				v-bind:class="{ 'about-button--is-hidden': isMoreModalOpen }"
 				v-on:click="toggleAboutModal"
 			>About</button>
 		</div>
