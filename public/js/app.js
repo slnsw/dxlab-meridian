@@ -52,6 +52,7 @@
 			year: null,
 			language: null,
 			isModalOpen: false,
+			isAboutModalOpen: false,
 	  },
 	  methods: {
 			changeGlobe: function (newGlobeKey) {
@@ -83,6 +84,9 @@
 	    },
 			toggleModal: function(event) {
 				this.$data.isModalOpen = !this.$data.isModalOpen;
+			},
+			toggleAboutModal: function(event) {
+				this.$data.isAboutModalOpen = !this.$data.isAboutModalOpen;
 			}
 	  }
 	})

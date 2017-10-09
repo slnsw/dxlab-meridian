@@ -14,6 +14,10 @@ body {
   line-height: 1.4;
 }
 
+a {
+  transition: 0.3s;
+}
+
 a:link, a:visited {
   color: #ed0180;
   text-decoration: none;
@@ -110,6 +114,7 @@ button {
 
 .modal-button {
   position: absolute;
+  z-index: 20;
   top: 1.25em;
   right: 1.25em;
   width: 8em;
@@ -139,8 +144,24 @@ button {
   }
 }
 
+.about-button {
+  position: absolute;
+  z-index: 5;
+  bottom: 1.25em;
+  right: 1.25em;
+  font-size: 0.8em;
+}
+
+@media(min-width: 40em) {
+  .about-button {
+    bottom: 3.75em;
+    right: 3.75em;
+  }
+}
+
 .modal {
   position: absolute;
+  z-index: 10;
   top: 1em;
   right: 1em;
   padding: 1em;
@@ -162,6 +183,12 @@ button {
     padding: 2em;
     padding-bottom: 5em;
   }
+}
+
+.about-modal {
+  z-index: 1;
+  top: inherit;
+  bottom: 3em;
 }
 
 .modal-animation-enter-active, .modal-animation-leave-active {

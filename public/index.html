@@ -28,7 +28,7 @@
 		<div id="app">
 			<header>
 				<a href="http://dxlab.sl.nsw.gov.au"><img class="logo-dxlab" src="/images/DX_Lab_Logo_FA_White.png" alt="DX Lab website" /></a><br/>
-				<h1 style="margin-top: 0.1em; font-size: 0.8em; font-weight: 400; letter-spacing: 0.2em; text-transform: uppercase; margin-bottom: 0em;">Meridian</h1>
+				<h1 style="margin-top: 0.1em; font-size: 0.8em; font-weight: 400; letter-spacing: 0.2em; text-transform: uppercase; margin-bottom: 0em;">Medieval Globes</h1>
 				<div class="heading-divider"></div>
 
 				<div class="menu">
@@ -67,6 +67,21 @@
 				</div>
 			</transition>
 
+			<transition
+				name="modal-animation"
+			>
+				<div
+					class="modal about-modal"
+					v-if="isAboutModalOpen"
+					v-cloak
+				>
+					<div class="modal__content">
+						<h1>About</h1>
+						<p>About this project.</p>
+					</div>
+				</div>
+			</transition>
+
 			<button
 				class="button modal-button"
 				v-on:click="toggleModal"
@@ -75,6 +90,11 @@
 				<span v-if="isModalOpen">Close</span>
 				<span v-else="!isModalOpen">More info</span>
 			</button>
+
+			<button
+				class="button about-button"
+				v-on:click="toggleAboutModal"
+			>About</button>
 		</div>
 
 		<div id="webgl"></div>
