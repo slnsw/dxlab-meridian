@@ -14,7 +14,7 @@
 	// Globe configurations
 	var globeConfigs = {
 		miranda: {
-			name: 'Miranda',
+			name: 'Joseph Da Costa E Miranda\'s World Map',
 			radius: radius,
 			segments: segments,
 			map: '/images/Miranda_Map_Working_Wraparound_Composite2_4000px.jpg',
@@ -22,17 +22,22 @@
 				'/images/Miranda_Map_Working_Wraparound_Composite2_4000px_bump.gif',
 			bumpScale: 0.0008,
 			content: '<p>Richly decorated showing saints, Atlas, ships, views, cartouches, flags, and heraldic devices. The large land mass "Terra de Iesso Ieco" (now Hokkaido) originated with Maarten Vries in 1643. [According to him, &quot;Landt van Eso\' to the north of Kyushu was separated by Staten Eylant (Kunashir) and De Vries\' Strait from \'Compagnies Land\' (Iturup)]. Iesso or Terra Esonis continued to be shown on French, Dutch, Spanish and Italian maps from 1660 to well after 1700 before becoming part of Alaska.</p>',
+			year: '1706',
+			language: 'Portuguese',
 			url: 'http://digital.sl.nsw.gov.au/delivery/DeliveryManagerServlet?embedded=true&toolbar=false&dps_pid=IE3538803'
 		},
 		coronelli1: {
-			name: 'Coronelli Terrestrial',
+			name: 'Coronelli Terrestrial Globe',
 			radius: radius,
 			segments: segments,
-			map: '/images/10070028-Coronelli-David-Rumsey-3000px.jpg',
-			bumpMap: '/images/10070028-Coronelli-David-Rumsey-3000px-bump.jpg',
+			map: '/images/10070028-Coronelli-David-Rumsey-4000px.jpg',
+			bumpMap: '/images/10070028-Coronelli-David-Rumsey-4000px_bump.gif',
 			bumpScale: 0.0005,
 			content: '<p>Coronelli\'s portrait incl. parchment with "Atlante Veneto" [1690 - 1696]; this terrestrial set dated 1688 is therefore contemporary with the accompanying Celestial globe gore set which is dated 1693.</p><p>Includes text and illustrations. Relief shown pictorially.</p><p>This illustrated globe is amongst the largest printed, and contains up-to date discoveries by La Salle and Chaumont. The large and small medallions near the dedication to Cardinal Cesare D\'Estrees dated 1688 are blank.</p>',
-			url: 'http://digital.sl.nsw.gov.au/delivery/DeliveryManagerServlet?embedded=true&toolbar=false&dps_pid=IE3775803'
+			year: '1693',
+			language: 'Italian',
+			url: 'http://digital.sl.nsw.gov.au/delivery/DeliveryManagerServlet?embedded=true&toolbar=false&dps_pid=IE3775803',
+			credit: 'David Rumsey'
 		}
 	};
 
@@ -42,8 +47,10 @@
 	  data: {
 	    items: globeConfigs,
 			globeKey: globeKey,
-			title: 'Test',
-			content: 'Content',
+			title: null,
+			content: null,
+			year: null,
+			language: null,
 			isModalOpen: false,
 	  },
 	  methods: {
@@ -89,21 +96,22 @@
 	}
 
 	var scene = new THREE.Scene();
+	scene.add(new THREE.AmbientLight(0x333333));
 
-	var camera = new THREE.PerspectiveCamera(45, width / height, 0.01, 1000);
+	// console.log();
+	var cameraDepth = (1/width * 10000) + 40;
+
+	var camera = new THREE.PerspectiveCamera(cameraDepth, width / height, 0.01, 1000);
 	camera.position.z = 1.5;
 
 	var renderer = new THREE.WebGLRenderer();
 	renderer.setSize(width, height);
-
-	scene.add(new THREE.AmbientLight(0x333333));
 
 	var light = new THREE.DirectionalLight(0xffffff, 0.7);
 	light.position.set(5, 3, 5);
 	scene.add(light);
 
 	var spheres = createSpheres(globeConfigs);
-
 	spheres[globeKey].rotation.y = rotation;
 	scene.add(spheres[globeKey]);
 

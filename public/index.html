@@ -20,8 +20,9 @@
 						v-bind:class="{ active: globeKey === key }"
 						v-for="(item, key) in items"
 						v-on:click="changeGlobe(key)"
+						v-cloak
 					>
-						{{ item.name }}
+						<span v-if="globeKey === key">></span> {{ item.name }}
 					</button>
 				</div>
 
@@ -35,10 +36,13 @@
 				<div
 					class="modal"
 					v-if="isModalOpen"
+					v-cloak
 				>
 					<div class="modal__content">
 						<h1>{{ items[globeKey].name }}</h1>
 						<div class="heading-divider"></div>
+						<div class="modal__field">Year: {{ items[globeKey].year }}</div>
+						<div class="modal__field">Language: {{ items[globeKey].language }}</div>
 						<div v-html="items[globeKey].content"></div>
 					</div>
 
@@ -49,6 +53,7 @@
 			<button
 				class="button modal-button"
 				v-on:click="toggleModal"
+				v-cloak
 			>
 				<span v-if="isModalOpen">Close</span>
 				<span v-else="!isModalOpen">More info</span>
