@@ -3,6 +3,8 @@ const app = express();
 const path = require('path');
 
 const port = process.env.PORT || 3000;
+const isProduction = process.env.ENV === 'production' ? true : false;
+const appFolder = isProduction ? 'build' : 'public';
 
 // app.set('view engine', 'ejs');
 
@@ -19,10 +21,10 @@ const port = process.env.PORT || 3000;
 // });
 
 app.get('/', function(req, res) {
-  res.sendFile(path.join(__dirname+'/public/index.html'));
+  res.sendFile(path.join(__dirname + `/${appFolder}/index.html`));
 });
 
-app.use(express.static('public'));
+app.use(express.static(appFolder));
 
 app.listen(port, function() {
   console.log(`App listening on port ${port}!`);

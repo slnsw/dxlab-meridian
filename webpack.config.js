@@ -1,8 +1,12 @@
+require('dotenv').config();
+
 var webpack = require('webpack');
 var path = require('path');
 var HtmlReplaceWebpackPlugin = require('html-replace-webpack-plugin');
 var CopyWebpackPlugin = require('copy-webpack-plugin');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
+
+console.log(`GOOGLE_ANALYTICS_ID: ${process.env.GOOGLE_ANALYTICS_ID}`);
 
 module.exports = {
 	context: path.join(__dirname, '/'),
@@ -29,7 +33,7 @@ module.exports = {
     new HtmlReplaceWebpackPlugin([
       {
         pattern: '@@google-analytics-id',
-        replacement: 'new-google-id'
+        replacement: process.env.GOOGLE_ANALYTICS_ID
       },
     ])
   ]

@@ -4,7 +4,7 @@
   "description": "The State Library of NSW's 17th century maps reimagined as interactive 3D globes.",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js",
+    "start": "ENV=production node index.js",
     "dev": "ENV=development node index.js",
     "build": "webpack",
     "test": "echo \"Error: no test specified\" && exit 1"
