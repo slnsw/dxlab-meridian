@@ -11,7 +11,7 @@
 		<meta property="og:url" content="http://dxlab.sl.nsw.gov.au/medieval-globes/" />
 		<meta property="og:type" content="article" />
 		<meta property="og:title" content="Meridian" />
-		<meta property="og:description" content="300 year old maps remade into digital 3D globes." />
+		<meta property="og:description" content="17th century maps remade into interactive 3D globes." />
 		<meta property="og:image" content="/images/fb-image.jpg" />
 
 		<script>
@@ -78,7 +78,7 @@
 						<div v-html="items[globeKey].content"></div>
 					</div>
 
-					<a v-bind:href="items[globeKey].url" class="button content-button" target="_blank">View record</a>
+					<a v-bind:href="items[globeKey].url" class="button modal-button modal-button--content" target="_blank">View record</a>
 				</div>
 			</transition>
 
@@ -92,7 +92,7 @@
 				>
 					<div class="modal__content">
 						<button
-							class="button modal-button about-modal-button"
+							class="button modal-button modal-button--close"
 							v-on:click="toggleAboutModal"
 							v-if="isAboutModalOpen"
 							v-cloak
@@ -103,7 +103,7 @@
 						<h1>About</h1>
 						<div class="heading-divider"></div>
 						<p>About this project.</p>
-						<a href="" class="button content-button">Read blog post</a>
+						<a href="" class="button modal-button modal-button--content">Read blog post</a>
 					</div>
 				</div>
 			</transition>
@@ -118,8 +118,8 @@
 			</button>
 
 			<button
-				class="button about-button"
-				v-bind:class="{ 'about-button--is-hidden': isMoreModalOpen }"
+				class="button modal-button modal-button--about"
+				v-bind:class="{ 'modal-button--about--is-hidden': isMoreModalOpen }"
 				v-on:click="toggleAboutModal"
 			>About</button>
 		</div>

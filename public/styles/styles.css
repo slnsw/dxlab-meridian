@@ -1,3 +1,8 @@
+/*
+ * VUE JS
+ * -------------------------------------------------------------------------- */
+
+
 [v-cloak] {
   display: none;
 }
@@ -43,6 +48,10 @@
     left: 3em;
   }
 }
+
+/*
+ * NAV & MENU
+ * -------------------------------------------------------------------------- */
 
 nav {
   position: relative;
@@ -107,7 +116,7 @@ nav {
 }
 
 /*
- * BUTTON
+ * BUTTONS
  * -------------------------------------------------------------------------- */
 
 .button {
@@ -183,9 +192,9 @@ nav {
   }
 }
 
-.content-button {
-  position: absolute;
-  bottom: 1em;
+.modal-button--content {
+  top: auto;
+  bottom: 3em;
   right: 1em;
   display: block;
   min-width: 10em;
@@ -193,32 +202,32 @@ nav {
 }
 
 @media(min-width: 40em) {
-  .content-button {
-    bottom: 2em;
+  .modal-button--content {
+    bottom: 4em;
     right: 2em;
   }
 }
 
-.about-button {
-  position: absolute;
+.modal-button--about {
   z-index: 25;
+  width: auto;
+  top: auto;
   bottom: 1.25em;
   right: 1.25em;
-  font-size: 0.8em;
 }
 
-.about-button--is-hidden {
+.modal-button--about--is-hidden {
   z-index: 1;
 }
 
 @media(min-width: 40em) {
-  .about-button {
+  .modal-button--about {
     bottom: 3.75em;
     right: 3.75em;
   }
 }
 
-.about-modal-button {
+.modal-button--close {
   top: -1px;
   right: -1px;
 }
@@ -318,7 +327,7 @@ nav {
   position: absolute;
   z-index: 0;
   background-color: rgba(0, 0, 0, 1);
-  opacity: 0.3;
+  opacity: 0.4;
   transition: 0.3s;
 }
 
@@ -329,6 +338,10 @@ nav {
 .modal-underlay-animation-enter, .modal-underlay-animation-leave-to /* .fade-leave-active below version 2.1.8 */ {
   opacity: 0;
 }
+
+/*
+ * WEBGL-ERROR
+ * -------------------------------------------------------------------------- */
 
 .webgl-error { font: 15px/30px monospace; text-align: center; color: #fff; margin: 50px; }
 .webgl-error a { color: #fff; }
