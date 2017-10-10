@@ -3,6 +3,7 @@ require('dotenv').config();
 var webpack = require('webpack');
 var path = require('path');
 var HtmlReplaceWebpackPlugin = require('html-replace-webpack-plugin');
+var CleanWebpackPlugin = require('clean-webpack-plugin');
 var CopyWebpackPlugin = require('copy-webpack-plugin');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 
@@ -17,9 +18,13 @@ module.exports = {
 		publicPath: '/public/'
 	},
 	plugins: [
+		new CleanWebpackPlugin([ 'build' ]),
     new CopyWebpackPlugin([
       { from: 'public' }
     ]),
+		new webpack.optimize.UglifyJsPlugin({
+      compress: { warnings: false }
+	  }),
     new HtmlWebpackPlugin(
     {
       title: 'Foo',
@@ -35,6 +40,10 @@ module.exports = {
         pattern: '@@google-analytics-id',
         replacement: process.env.GOOGLE_ANALYTICS_ID
       },
+			{
+				pattern: 'app.js',
+				replacement: 'app.min.js'
+			}
     ])
   ]
 };

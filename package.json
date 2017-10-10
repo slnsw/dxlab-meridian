@@ -16,6 +16,7 @@
     "express": "^4.15.4"
   },
   "devDependencies": {
+    "clean-webpack-plugin": "^0.1.17",
     "copy-webpack-plugin": "^4.1.1",
     "dotenv": "^4.0.0",
     "html-replace-webpack-plugin": "^2.2.8",
