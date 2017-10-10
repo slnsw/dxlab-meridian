@@ -57,6 +57,7 @@
 			language: null,
 			isMoreModalOpen: false,
 			isAboutModalOpen: false,
+			isGlobeMenuOpen: false,
 	  },
 	  methods: {
 			changeGlobe: function (newGlobeKey) {
@@ -85,18 +86,26 @@
 	          window.history.pushState({path:newurl},'',newurl);
 		      }
 				}
+
+				this.$data.isGlobeMenuOpen = false;
 	    },
 			toggleMoreModal: function() {
 				this.$data.isMoreModalOpen = !this.$data.isMoreModalOpen;
 				this.$data.isAboutModalOpen = false;
+				this.$data.isGlobeMenuOpen = false;
 			},
 			toggleAboutModal: function() {
 				this.$data.isAboutModalOpen = !this.$data.isAboutModalOpen;
 				this.$data.isMoreModalOpen = false;
+				this.$data.isGlobeMenuOpen = false;
+			},
+			toggleGlobeMenu: function() {
+				this.$data.isGlobeMenuOpen = !this.$data.isGlobeMenuOpen;
 			},
 			closeModals: function() {
 				this.$data.isAboutModalOpen = false;
 				this.$data.isMoreModalOpen = false;
+				this.$data.isGlobeMenuOpen = false;
 			}
 	  }
 	})
