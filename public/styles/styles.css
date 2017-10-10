@@ -94,6 +94,7 @@ button {
 
 .button-change-globe.active {
   color: #ed0180;
+  font-weight: 700;
 }
 
 .button {
@@ -192,6 +193,7 @@ button {
     top: 3em;
     right: 3em;
     width: 50%;
+    max-width: 38em;
     height: 70%;
     padding: 2em;
     padding-bottom: 5em;
