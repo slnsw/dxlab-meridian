@@ -4,6 +4,8 @@
 
 The State Library of NSW has a unique collection of maps from the 16th and 17th century. The Meridian project seeks to reimagine these maps as interactive 3D globes using  open source web technologies.
 
+![Meridian website](http://dxlab.sl.nsw.gov.au/meridian/images/screenshot.jpg)
+
 View it here: http://dxlab.sl.nsw.gov.au/meridian
 
 This repository contains all code and project files. It is freely available for re-use and reference.

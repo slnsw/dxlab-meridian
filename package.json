@@ -6,6 +6,7 @@
   "scripts": {
     "start": "node index.js",
     "dev": "ENV=development node index.js",
+    "build": "webpack",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Kaho Cheung <kaho.cheung@sl.nsw.gov.au> (https://github.com/unkleho)",
@@ -14,5 +15,11 @@
     "browser-sync": "^2.18.13",
     "express": "^4.15.4"
   },
-  "devDependencies": {}
+  "devDependencies": {
+    "copy-webpack-plugin": "^4.1.1",
+    "dotenv": "^4.0.0",
+    "html-replace-webpack-plugin": "^2.2.8",
+    "html-webpack-plugin": "^2.30.1",
+    "webpack": "^3.6.0"
+  }
 }
