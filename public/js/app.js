@@ -82,12 +82,16 @@
 		      }
 				}
 	    },
-			toggleMoreModal: function(event) {
+			toggleMoreModal: function() {
 				this.$data.isMoreModalOpen = !this.$data.isMoreModalOpen;
 				this.$data.isAboutModalOpen = false;
 			},
-			toggleAboutModal: function(event) {
+			toggleAboutModal: function() {
 				this.$data.isAboutModalOpen = !this.$data.isAboutModalOpen;
+				this.$data.isMoreModalOpen = false;
+			},
+			closeModals: function() {
+				this.$data.isAboutModalOpen = false;
 				this.$data.isMoreModalOpen = false;
 			}
 	  }

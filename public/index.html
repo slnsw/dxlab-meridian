@@ -26,6 +26,14 @@
 
 	<body>
 		<div id="app">
+			<transition name="modal-underlay-animation">
+				<div
+					class="modal-underlay"
+					v-on:click="closeModals"
+					v-if="isMoreModalOpen || isAboutModalOpen"
+				></div>
+			</transition>
+
 			<header>
 				<a href="http://dxlab.sl.nsw.gov.au"><img class="logo-dxlab" src="/images/DX_Lab_Logo_FA_White.png" alt="DX Lab website" /></a><br/>
 				<h1 style="margin-top: 0.1em; font-size: 0.8em; font-weight: 400; letter-spacing: 0.2em; text-transform: uppercase; margin-bottom: 0em;">Medieval Globes</h1>
@@ -88,6 +96,7 @@
 						<h1>About</h1>
 						<div class="heading-divider"></div>
 						<p>About this project.</p>
+						<a href="" class="button content-button">Read blog post</a>
 					</div>
 				</div>
 			</transition>

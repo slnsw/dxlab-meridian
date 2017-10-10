@@ -81,6 +81,8 @@ button {
 
 .button-change-globe {
   display: block;
+  z-index: 1;
+  position: relative;
   border: none;
   background-color: transparent;
   font-family: 'Lekton', sans-serif;
@@ -101,14 +103,16 @@ button {
   text-transform: uppercase;
   font-size: 1em;
   letter-spacing: 0.2em;
+  transition: 0.3s;
 }
 
   .button:link, .button:visited {
     color: #EEE;
   }
 
-  .button:hover {
+  .button:hover, .button:active {
     color: #ed0180;
+    /*border-color: #ed0180;*/
     cursor: pointer;
   }
 
@@ -206,6 +210,17 @@ button {
     }
   }
 
+  .about-modal .content-button {
+    bottom: 3em;
+    width: 15em;
+  }
+
+    @media(min-width: 40em) {
+      .about-modal .content-button {
+        bottom: 4em;
+      }
+    }
+
 .modal-animation-enter-active, .modal-animation-leave-active {
   transition: all .5s cubic-bezier(0.86, 0, 0.07, 1);
 }
@@ -239,6 +254,26 @@ button {
     margin-bottom: 0;
     padding-bottom: 0;
   }
+
+.modal-underlay {
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  position: absolute;
+  z-index: 0;
+  background-color: rgba(0, 0, 0, 1);
+  opacity: 0.3;
+  transition: 0.3s;
+}
+
+.modal-underlay-animation-enter-active, .modal-underlay-animation-leave-active {
+  transition: all .5s cubic-bezier(0.86, 0, 0.07, 1);
+}
+
+.modal-underlay-animation-enter, .modal-underlay-animation-leave-to /* .fade-leave-active below version 2.1.8 */ {
+  opacity: 0;
+}
 
 .webgl-error { font: 15px/30px monospace; text-align: center; color: #fff; margin: 50px; }
 .webgl-error a { color: #fff; }
