@@ -193,7 +193,7 @@ button {
     top: 3em;
     right: 3em;
     width: 50%;
-    max-width: 38em;
+    max-width: 34em;
     height: 70%;
     padding: 2em;
     padding-bottom: 5em;
@@ -240,14 +240,13 @@ button {
     font-size: 2em;
     max-width: calc(100% - 2em);
     line-height: 1.2;
-    /*display: none;*/
   }
 
-    @media(min-width: 40em) {
-      .modal {
-        max-width: auto;
-      }
-    }
+  .modal__content img {
+    width: 100%;
+    height: auto;
+    margin-right: 1em;
+  }
 
   .modal__field {
     text-transform: uppercase;

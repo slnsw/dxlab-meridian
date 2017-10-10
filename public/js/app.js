@@ -21,8 +21,9 @@
 			bumpMap:
 				'/images/Miranda_Map_Working_Wraparound_Composite2_4000px_bump.gif',
 			bumpScale: 0.0008,
-			content: '<p>Richly decorated showing saints, Atlas, ships, views, cartouches, flags, and heraldic devices. The large land mass "Terra de Iesso Ieco" (now Hokkaido) originated with Maarten Vries in 1643. [According to him, &quot;Landt van Eso\' to the north of Kyushu was separated by Staten Eylant (Kunashir) and De Vries\' Strait from \'Compagnies Land\' (Iturup)]. Iesso or Terra Esonis continued to be shown on French, Dutch, Spanish and Italian maps from 1660 to well after 1700 before becoming part of Alaska.</p>',
-			author: 'Joseph Da Costa E Miranda',
+			content: '<p>Richly decorated showing saints, Atlas, ships, views, cartouches, flags, and heraldic devices. The large land mass "Terra de Iesso Ieco" (now Hokkaido) originated with Maarten Vries in 1643.</p>',
+			imageUrl: '/images/Miranda_Map_Original.jpg',
+			artist: 'Joseph Da Costa E Miranda',
 			year: '1706',
 			language: 'Portuguese',
 			url: 'http://digital.sl.nsw.gov.au/delivery/DeliveryManagerServlet?embedded=true&toolbar=false&dps_pid=IE3538803'
@@ -34,8 +35,9 @@
 			map: '/images/10070028-Coronelli-David-Rumsey-4000px.jpg',
 			bumpMap: '/images/10070028-Coronelli-David-Rumsey-4000px_bump.gif',
 			bumpScale: 0.0005,
-			content: '<p>Coronelli\'s portrait incl. parchment with "Atlante Veneto" [1690 - 1696]; this terrestrial set dated 1688 is therefore contemporary with the accompanying Celestial globe gore set which is dated 1693.</p><p>Includes text and illustrations. Relief shown pictorially.</p><p>This illustrated globe is amongst the largest printed, and contains up-to date discoveries by La Salle and Chaumont. The large and small medallions near the dedication to Cardinal Cesare D\'Estrees dated 1688 are blank.</p>',
-			author: 'Vincenzo Coronelli',
+			content: '<p>Coronelli\'s portrait incl. parchment with "Atlante Veneto" [1690 - 1696]; this terrestrial set dated 1688 is therefore contemporary with the accompanying Celestial globe gore set which is dated 1693.</p>',
+			imageUrl: '/images/Coronelli_Map_Terrestrial_Original.jpg',
+			artist: 'Vincenzo Coronelli',
 			year: '1693',
 			language: 'Italian',
 			url: 'http://digital.sl.nsw.gov.au/delivery/DeliveryManagerServlet?embedded=true&toolbar=false&dps_pid=IE3775803',
