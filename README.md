@@ -2,7 +2,7 @@
 
 ## Introduction
 
-The State Library of NSW has a unique collection of maps from the 16th and 17th century. The Meridian project seeks to reimagine these maps as interactive 3D globes using  open source web technologies.
+The State Library of NSW has a unique collection of maps from the 16th and 17th century. The Meridian project seeks to reimagine these maps as interactive 3D globes using open source web technologies.
 
 ![Meridian website](http://dxlab.sl.nsw.gov.au/meridian/images/screenshot.jpg)
 
@@ -43,9 +43,14 @@ Then go to `http://localhost:3001` to see the app in action! `Browsersync` will 
 
 ## Deployment
 
-Just copy the `/public` folder to any server.
+Just copy the `/build` folder to any server.
 
-Internally, we use `now` for deployments.
+Internally, we use `now` for deployments. We also use `dotenv`, so make sure you have a .env and .env.production file.
+
+```
+$ npm run deploy # Deploys staging version
+$ npm run deploy-production # Deploys production version
+```
 
 ## Credits
 

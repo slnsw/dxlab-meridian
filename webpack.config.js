@@ -11,16 +11,16 @@ console.log(`GOOGLE_ANALYTICS_ID: ${process.env.GOOGLE_ANALYTICS_ID}`);
 
 module.exports = {
 	context: path.join(__dirname, '/'),
-	entry: ['./public/js/app.js'],
+	entry: ['./src/js/app.js'],
 	output: {
 		path: path.join(__dirname, '/build'),
 		filename: 'js/app.min.js',
-		publicPath: '/public/'
+		publicPath: '/src/'
 	},
 	plugins: [
 		new CleanWebpackPlugin([ 'build' ]),
     new CopyWebpackPlugin([
-      { from: 'public' }
+      { from: 'src' }
     ]),
 		new webpack.optimize.UglifyJsPlugin({
       compress: { warnings: false }
@@ -29,7 +29,7 @@ module.exports = {
     {
       title: 'Foo',
       filename: 'index.html',
-      template: 'public/index.html',
+      template: 'src/index.html',
       inject: true,
       minify: false,
       chunks: 'all',

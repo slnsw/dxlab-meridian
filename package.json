@@ -11,6 +11,7 @@
     "dev": "ENV=development node index.js",
     "build": "webpack",
     "deploy": "now --dotenv",
+    "deploy-production": "now --dotenv=.env.production",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Kaho Cheung <kaho.cheung@sl.nsw.gov.au> (https://github.com/unkleho)",
