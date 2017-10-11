@@ -4,21 +4,7 @@ const path = require('path');
 
 const port = process.env.PORT || 3000;
 const isProduction = process.env.ENV === 'production' ? true : false;
-const appFolder = isProduction ? 'build' : 'public';
-
-// app.set('view engine', 'ejs');
-
-// app.get('/globe/miranda', function(req, res) {
-//   res.render('index', {
-//     globe: 'miranda'
-//   });
-// });
-//
-// app.get('/globe/coronelli', function(req, res) {
-//   res.render('index', {
-//     globe: 'coronelli'
-//   });
-// });
+const appFolder = isProduction ? 'build' : 'src';
 
 app.get('/', function(req, res) {
   res.sendFile(path.join(__dirname + `/${appFolder}/index.html`));
@@ -33,8 +19,8 @@ app.listen(port, function() {
 if (process.env.ENV === 'development') {
   const browserSync = require('browser-sync');
   browserSync({
-    server: 'public',
-    files: ['public/**.*'],
+    server: 'src',
+    files: ['src/**.*'],
     open: false
   });
 }

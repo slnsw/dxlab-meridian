@@ -257,7 +257,7 @@ nav {
     right: 3em;
     width: 50%;
     max-width: 34em;
-    height: 70%;
+    height: auto;
     padding: 2em;
     padding-bottom: 5em;
   }
