@@ -2,7 +2,7 @@
 
 ## Introduction
 
-The State Library of NSW has a unique collection of maps from the 16th and 17th century. The Meridian project seeks to reimagine these maps as interactive 3D globes using open source web technologies.
+The State Library of NSW has a unique collection of maps from the 17th and 18th century. The Meridian project seeks to reimagine these maps as interactive 3D globes using web technologies.
 
 ![Meridian website](http://dxlab.sl.nsw.gov.au/meridian/images/screenshot.jpg)
 
@@ -28,6 +28,7 @@ Meridian can be served as a static HTML application. The following Javascript li
 For local development, Node.js is used in conjunction with the following libraries:
 
 - [Express](https://expressjs.com/)
+- [Webpack](https://webpack.js.org)
 - [Browsersync](https://www.browsersync.io/)
 
 ## Getting Started

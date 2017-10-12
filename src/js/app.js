@@ -21,7 +21,7 @@
 			bumpMap:
 				'/images/Miranda_Map_Working_Wraparound_Composite2_4000px_bump.gif',
 			bumpScale: 0.0008,
-			content: '<p>This manuscript map was produced in Lisbon in 1706, using a cylindrial projection. The coastines of the Australian continent are duplicated on either side of the map so that when the map is wrapped around a globe, the edges overlap in line with the east coast of Australia.</p>',
+			content: '<p>This manuscript map was produced in Lisbon in 1706, using a cylindrical projection. The coastlines of the Australian continent are duplicated on either side of the map so that when the map is wrapped around a globe, the edges overlap in line with the east coast of Australia.</p>',
 			imageUrl: '/images/Miranda_Map_Original.jpg',
 			artist: 'Joseph Da Costa E Miranda',
 			year: '1706',
