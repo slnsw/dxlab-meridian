@@ -105,7 +105,7 @@ nav {
 
 .menu-title {
   display: inline-block;
-  font-size: 0.8em;
+  font-size: 1em;
   /*background-color: rgba(0, 0, 0, 0.2);*/
   padding: 0.4em;
   margin: -0.6em 0 0 -0.4em;
@@ -208,7 +208,7 @@ nav {
 
 .modal-button--content {
   top: auto;
-  bottom: 3em;
+  bottom: 1em;
   right: 1em;
   display: block;
   min-width: 10em;
@@ -217,7 +217,7 @@ nav {
 
 @media(min-width: 40em) {
   .modal-button--content {
-    bottom: 4em;
+    bottom: 2em;
     right: 2em;
   }
 }
@@ -317,9 +317,21 @@ nav {
   animation: modal-enter-mobile 0.5s ease-in-out;
 }
 
+  @media (min-width: 40em) {
+    .modal-animation-enter-active {
+      animation: modal-enter 0.5s ease-in-out;
+    }
+  }
+
 .modal-animation-leave-active {
   animation: modal-leave-mobile 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
 }
+
+  @media (min-width: 40em) {
+    .modal-animation-leave-active {
+      animation: modal-leave 0.5s ease-in-out;
+    }
+  }
 
 .modal-animation-enter, .modal-animation-leave-to /* .fade-leave-active below version 2.1.8 */ {
   /*width: 6em;
@@ -331,14 +343,14 @@ nav {
 @keyframes modal-enter-mobile {
   0% {
     width: 0;
-    height: 0.8em;
+    height: 1.8em;
     opacity: 0;
-    padding: 0;
+    padding: 0.5em;
   }
   50% {
     width: calc(100% - 2em);
-    height: 0.8em;
-    padding: 1em;
+    height: 1.8em;
+    padding: 0.5em;
   }
   100% {
     height: calc(100% - 2em);
@@ -349,7 +361,7 @@ nav {
 @keyframes modal-enter {
   0% {
     width: 0;
-    height: 1em;
+    height: 1.8em;
     /*opacity: 0;*/
     padding: 0;
   }
@@ -369,15 +381,15 @@ nav {
   }
 
   50% {
-    height: 0.8em;
+    height: 1.8em;
     width: calc(100% - 2em);
     opacity: 1;
   }
 
   100% {
     width: 6em;
-    height: 0.8em;
-    padding: 1em;
+    height: 1.8em;
+    padding: 0.5em;
     opacity: 0;
   }
 }
@@ -397,7 +409,7 @@ nav {
     width: 6em;
     height: 1em;
     padding: 1em;
-    /*opacity: 0;*/
+    opacity: 0;
   }
 
 }
