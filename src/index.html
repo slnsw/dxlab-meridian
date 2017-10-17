@@ -58,15 +58,19 @@
 					class="modal"
 					v-if="isMoreModalOpen"
 				>
-					<div class="modal__content">
-						<h1>{{ items[globeKey].name }}</h1>
-						<div class="modal__field">Artist: {{ items[globeKey].artist }}</div>
-						<div class="modal__field">Year: {{ items[globeKey].year }}</div>
-						<div class="modal__field">Language: {{ items[globeKey].language }}</div>
-						<div class="heading-divider"></div>
-						<img v-bind:src="items[globeKey].imageUrl" />
-						<div v-html="items[globeKey].content"></div>
-					</div>
+					<!-- <transition
+						name="modal__content-animation"
+					> -->
+						<div class="modal__content">
+							<h1>{{ items[globeKey].name }}</h1>
+							<div class="modal__field">Artist: {{ items[globeKey].artist }}</div>
+							<div class="modal__field">Year: {{ items[globeKey].year }}</div>
+							<div class="modal__field">Language: {{ items[globeKey].language }}</div>
+							<div class="heading-divider"></div>
+							<img v-bind:src="items[globeKey].imageUrl" />
+							<div v-html="items[globeKey].content"></div>
+						</div>
+				<!-- </transition> -->
 
 					<a v-bind:href="items[globeKey].url" class="button modal-button modal-button--content" target="_blank" tabindex="0">View record</a>
 				</div>

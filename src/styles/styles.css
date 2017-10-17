@@ -300,16 +300,69 @@ nav {
       }
     }
 
-.modal-animation-enter-active, .modal-animation-leave-active {
-  transition: all .5s cubic-bezier(0.86, 0, 0.07, 1);
+.modal-animation-enter-active {
+  /*transition: all .5s cubic-bezier(0.86, 0, 0.07, 1);*/
+  animation: bouncein 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+}
+
+.modal-animation-leave-active {
+  animation: bounceout 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
 }
 
 .modal-animation-enter, .modal-animation-leave-to /* .fade-leave-active below version 2.1.8 */ {
-  width: 6em;
+  /*width: 6em;
   height: 1em;
   opacity: 0;
-  padding: 1em;
+  padding: 1em;*/
 }
+
+@keyframes bouncein {
+  0% {
+    width: 0;
+    height: 1em;
+    /*opacity: 0;*/
+    padding: 0;
+  }
+  50% {
+    width: 50%;
+    max-width: 34em;
+    height: 1em;
+    padding: 2em;
+  }
+  100% {
+    height: auto;
+  }
+
+}
+
+@keyframes bounceout {
+  0% {
+  }
+
+  50% {
+    height: 1em;
+    width: 50%;
+    max-width: 34em;
+    opacity: 1;
+  }
+
+  100% {
+    width: 6em;
+    height: 1em;
+    padding: 1em;
+    /*opacity: 0;*/
+  }
+
+}
+
+  .modal__content {
+    transition: all 0.8s cubic-bezier(0.86, 0, 0.07, 1);
+    opacity: 1;
+  }
+
+  .modal-animation-enter .modal__content, .modal-animation-leave-to .modal__content {
+    opacity: 0;
+  }
 
   .modal__content h1 {
     margin-top: 0;
