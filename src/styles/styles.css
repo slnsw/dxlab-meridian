@@ -246,6 +246,17 @@ nav {
   right: -1px;
 }
 
+.modal-button {
+  transition: all 0.8s cubic-bezier(0.86, 0, 0.07, 1);
+  opacity: 1;
+}
+
+.modal-animation-enter .modal-button,
+.modal-animation-leave-to .modal-button {
+  opacity: 0;
+}
+
+
 /*
  * MODAL
  * -------------------------------------------------------------------------- */
@@ -302,11 +313,12 @@ nav {
 
 .modal-animation-enter-active {
   /*transition: all .5s cubic-bezier(0.86, 0, 0.07, 1);*/
-  animation: bouncein 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+  /*animation: modal-enter-mobile 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;*/
+  animation: modal-enter-mobile 0.5s ease-in-out;
 }
 
 .modal-animation-leave-active {
-  animation: bounceout 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+  animation: modal-leave-mobile 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
 }
 
 .modal-animation-enter, .modal-animation-leave-to /* .fade-leave-active below version 2.1.8 */ {
@@ -316,7 +328,25 @@ nav {
   padding: 1em;*/
 }
 
-@keyframes bouncein {
+@keyframes modal-enter-mobile {
+  0% {
+    width: 0;
+    height: 0.8em;
+    opacity: 0;
+    padding: 0;
+  }
+  50% {
+    width: calc(100% - 2em);
+    height: 0.8em;
+    padding: 1em;
+  }
+  100% {
+    height: calc(100% - 2em);
+    /*opacity: 0;*/
+  }
+}
+
+@keyframes modal-enter {
   0% {
     width: 0;
     height: 1em;
@@ -332,10 +362,27 @@ nav {
   100% {
     height: auto;
   }
-
 }
 
-@keyframes bounceout {
+@keyframes modal-leave-mobile {
+  0% {
+  }
+
+  50% {
+    height: 0.8em;
+    width: calc(100% - 2em);
+    opacity: 1;
+  }
+
+  100% {
+    width: 6em;
+    height: 0.8em;
+    padding: 1em;
+    opacity: 0;
+  }
+}
+
+@keyframes modal-leave {
   0% {
   }
 
@@ -360,7 +407,8 @@ nav {
     opacity: 1;
   }
 
-  .modal-animation-enter .modal__content, .modal-animation-leave-to .modal__content {
+  .modal-animation-enter .modal__content,
+  .modal-animation-leave-to .modal__content {
     opacity: 0;
   }
 
