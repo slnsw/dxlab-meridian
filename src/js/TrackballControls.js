@@ -18,18 +18,18 @@ THREE.TrackballControls = function ( object, domElement ) {
 	this.radius = ( this.screen.width + this.screen.height ) / 4;
 
 	this.rotateSpeed = 1.0;
-	this.zoomSpeed = 1.2;
-	this.panSpeed = 0.3;
+	this.zoomSpeed = 0.5;
+	this.panSpeed = 0.1;
 
 	this.noRotate = false;
 	this.noZoom = false;
 	this.noPan = false;
 
 	this.staticMoving = false;
-	this.dynamicDampingFactor = 0.2;
+	this.dynamicDampingFactor = 0.5;
 
-	this.minDistance = 0;
-	this.maxDistance = Infinity;
+	this.minDistance = 0.8;
+	this.maxDistance = 10;
 
 	this.keys = [ 65 /*A*/, 83 /*S*/, 68 /*D*/ ];
 
