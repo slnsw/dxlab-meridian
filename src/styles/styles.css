@@ -136,6 +136,7 @@ nav {
 .button {
   border: 1px solid #EEE;
   padding: 0.5em;
+  margin: 0;
   text-align: center;
   text-transform: uppercase;
   font-size: 1em;
@@ -324,7 +325,8 @@ nav {
   }
 
 .modal-animation-leave-active {
-  animation: modal-leave-mobile 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+  /*animation: modal-leave-mobile 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;*/
+  animation: modal-leave-mobile 0.5s ease-in-out;
 }
 
   @media (min-width: 40em) {
