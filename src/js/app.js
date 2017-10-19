@@ -150,10 +150,18 @@
 	// spheres[globeKey].material.opacity = 0.5;
 	spheres[globeKey].material.transparent = true;
 
+	window.addEventListener( 'resize', onWindowResize, false );
 
 	render();
 
 	// Functions
+
+	function onWindowResize(){
+    	camera.aspect = window.innerWidth / window.innerHeight;
+    	camera.updateProjectionMatrix();
+    	renderer.setSize( window.innerWidth, window.innerHeight );
+	}
+
 	function render() {
 
 		controls.update();
