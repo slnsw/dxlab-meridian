@@ -6,50 +6,54 @@
 
 	// Params
 	var radius = 0.5;
-	var	segments = 32;
-	var	rotation = 15;
+	var segments = 32;
+	var rotation = 15;
 	var width = window.innerWidth;
 	var height = window.innerHeight;
 
 	// Globe configurations
 	var globeConfigs = {
 		miranda: {
-			name: 'Miranda\'s World Map',
+			name: "Miranda's World Map",
 			radius: radius,
 			segments: segments,
-			map: '/images/Miranda_Map_Working_Wraparound_Composite2_4000px.jpg',
+			map: '/images/miranda-map-unprojected-4000px.jpg',
 			bumpMap:
-				'/images/Miranda_Map_Working_Wraparound_Composite2_4000px_bump.gif',
+				'/images/miranda-map-unprojected-4000px-bump.gif',
 			bumpScale: 0.0008,
-			content: '<p>This manuscript map was produced in Lisbon in 1706, using a cylindrical projection. The coastlines of the Australian continent are duplicated on either side of the map so that when the map is wrapped around a globe, the edges overlap in line with the east coast of Australia.</p>',
-			imageUrl: '/images/Miranda_Map_Original.jpg',
+			content:
+				'<p>This manuscript map was produced in Lisbon in 1706, using a cylindrical projection. The coastlines of the Australian continent are duplicated on either side of the map so that when the map is wrapped around a globe, the edges overlap in line with the east coast of Australia.</p>',
+			imageUrl: '/images/miranda-map-original.jpg',
 			artist: 'Joseph Da Costa E Miranda',
 			year: '1706',
 			language: 'Portuguese',
-			url: 'http://digital.sl.nsw.gov.au/delivery/DeliveryManagerServlet?embedded=true&toolbar=false&dps_pid=IE3538803'
+			url:
+				'http://digital.sl.nsw.gov.au/delivery/DeliveryManagerServlet?embedded=true&toolbar=false&dps_pid=IE3538803'
 		},
 		coronelli1: {
 			name: 'Coronelli Terrestrial Globe',
 			radius: radius,
 			segments: segments,
-			map: '/images/10070028-Coronelli-David-Rumsey-4000px.jpg',
-			bumpMap: '/images/10070028-Coronelli-David-Rumsey-4000px_bump.gif',
+			map: '/images/coronelli-terrestrial-map-unprojected-4000px.jpg',
+			bumpMap: '/images/coronelli-terrestrial-map-unprojected-4000px-bump.gif',
 			bumpScale: 0.0005,
-			content: '<p>This set of 24 gores and 2 polar calottes were printed from copper engravings in 1693. Italian cartographer Vincenzo Maria Coronelli began the engravings for the 110 cm globes in 1688 following the success of the  two large 4 metre globes produced for King Louis XIV in the early 1680s.</p>',
-			imageUrl: '/images/Coronelli_Map_Terrestrial_Original.jpg',
+			content:
+				'<p>This set of 24 gores and 2 polar calottes were printed from copper engravings in 1693. Italian cartographer Vincenzo Maria Coronelli began the engravings for the 110 cm globes in 1688 following the success of the  two large 4 metre globes produced for King Louis XIV in the early 1680s.</p>',
+			imageUrl: '/images/coronelli-terrestrial-map-original.jpg',
 			artist: 'Vincenzo Maria Coronelli',
 			year: '1693',
 			language: 'Italian',
-			url: 'http://digital.sl.nsw.gov.au/delivery/DeliveryManagerServlet?embedded=true&toolbar=false&dps_pid=IE3775803',
+			url:
+				'http://digital.sl.nsw.gov.au/delivery/DeliveryManagerServlet?embedded=true&toolbar=false&dps_pid=IE3775803',
 			credit: 'David Rumsey'
 		}
 	};
 
 	// Set up Vue instance
 	var vueApp = new Vue({
-	  el: '#app',
-	  data: {
-	    items: globeConfigs,
+		el: '#app',
+		data: {
+			items: globeConfigs,
 			globeKey: globeKey,
 			title: null,
 			content: null,
@@ -57,11 +61,11 @@
 			language: null,
 			isMoreModalOpen: false,
 			isAboutModalOpen: false,
-			isGlobeMenuOpen: false,
-	  },
-	  methods: {
-			changeGlobe: function (newGlobeKey) {
-				var oldGlobeKey = this.$data.globeKey
+			isGlobeMenuOpen: false
+		},
+		methods: {
+			changeGlobe: function(newGlobeKey) {
+				var oldGlobeKey = this.$data.globeKey;
 				var oldGlobe = spheres[oldGlobeKey];
 				var newGlobe = spheres[newGlobeKey];
 
@@ -73,22 +77,31 @@
 					scene.add(spheres[newGlobeKey]);
 
 					// Animate globes
-					TweenLite.to(oldGlobe.material, 0.2, { opacity: 0, onComplete: function() {
-						scene.remove(oldGlobe);
-					}});
+					TweenLite.to(oldGlobe.material, 0.2, {
+						opacity: 0,
+						onComplete: function() {
+							scene.remove(oldGlobe);
+						}
+					});
 					TweenLite.from(newGlobe.material, 0.2, { opacity: 0, delay: 0.2 });
 
 					this.$data.globeKey = newGlobeKey;
 					globeKey = newGlobeKey;
 
-		      if (history.pushState) {
-	          var newurl = window.location.protocol + "//" + window.location.host + window.location.pathname + '?globe=' + newGlobeKey;
-	          window.history.pushState({path:newurl},'',newurl);
-		      }
+					if (history.pushState) {
+						var newurl =
+							window.location.protocol +
+							'//' +
+							window.location.host +
+							window.location.pathname +
+							'?globe=' +
+							newGlobeKey;
+						window.history.pushState({ path: newurl }, '', newurl);
+					}
 				}
 
 				this.$data.isGlobeMenuOpen = false;
-	    },
+			},
 			toggleMoreModal: function() {
 				this.$data.isMoreModalOpen = !this.$data.isMoreModalOpen;
 				this.$data.isAboutModalOpen = false;
@@ -107,8 +120,8 @@
 				this.$data.isMoreModalOpen = false;
 				this.$data.isGlobeMenuOpen = false;
 			}
-	  }
-	})
+		}
+	});
 
 	// Set up Three JS scene and objects
 	var webglEl = document.getElementById('webgl');
@@ -122,14 +135,20 @@
 	scene.add(new THREE.AmbientLight(0x333333));
 
 	// Make camera position responsive to browser width
-	var cameraDepth = (1/width * 10000) + 40;
+	var cameraDepth = 1 / width * 10000 + 40;
 
-	var camera = new THREE.PerspectiveCamera(cameraDepth, width / height, 0.01, 1000);
+	var camera = new THREE.PerspectiveCamera(
+		cameraDepth,
+		width / height,
+		0.01,
+		1000
+	);
 	camera.position.z = 1.5;
 	camera.position.y = 0.2;
 
 	var renderer = new THREE.WebGLRenderer();
 	renderer.setSize(width, height);
+	webglEl.appendChild(renderer.domElement);
 
 	var light = new THREE.DirectionalLight(0xffffff, 0.7);
 	light.position.set(5, 3, 5);
@@ -137,6 +156,7 @@
 
 	var spheres = createSpheres(globeConfigs);
 	spheres[globeKey].rotation.y = rotation;
+	spheres[globeKey].material.transparent = true;
 	scene.add(spheres[globeKey]);
 
 	var stars = createStars(90, 64);
@@ -144,45 +164,29 @@
 
 	var controls = new THREE.TrackballControls(camera);
 
-	webglEl.appendChild(renderer.domElement);
-
-	// console.log(spheres[globeKey].material.opacity);
-	// spheres[globeKey].material.opacity = 0.5;
-	spheres[globeKey].material.transparent = true;
-
-	window.addEventListener( 'resize', onWindowResize, false );
+	window.addEventListener('resize', onWindowResize, false);
 
 	render();
 
-	// Functions
-
-	function onWindowResize(){
-    	camera.aspect = window.innerWidth / window.innerHeight;
-    	camera.updateProjectionMatrix();
-    	renderer.setSize( window.innerWidth, window.innerHeight );
-	}
-
+	// ThreeJS Functions
 	function render() {
-
 		controls.update();
 		// slowly rotate the globe
 		spheres[globeKey].rotation.y += 0.0005;
 
 		// keep light source near camera
 		let p = camera.position;
-		let q = new THREE.Vector3;
-		q.x = p.x; 
-		q.y = p.y; 
-		q.z = p.z; 
-		let yaxis = new THREE.Vector3( 0, 1, 0 );
+		let q = new THREE.Vector3();
+		q.x = p.x;
+		q.y = p.y;
+		q.z = p.z;
+		let yaxis = new THREE.Vector3(0, 1, 0);
 		let angle = Math.PI / 4;
-		q.applyAxisAngle( yaxis, angle );
-		let zaxis = new THREE.Vector3( 0, 0, 1 );
+		q.applyAxisAngle(yaxis, angle);
+		let zaxis = new THREE.Vector3(0, 0, 1);
 		let angle2 = Math.PI / 6;
-		q.applyAxisAngle( zaxis, angle2 );
-		light.position.copy( q );
-
-		// spheres[globeKey].material.opacity = Math.sin(new Date().getTime() * .0025);
+		q.applyAxisAngle(zaxis, angle2);
+		light.position.copy(q);
 
 		requestAnimationFrame(render);
 		renderer.render(scene, camera);
@@ -195,7 +199,6 @@
 				map: THREE.ImageUtils.loadTexture(args.map),
 				bumpMap: THREE.ImageUtils.loadTexture(args.bumpMap),
 				bumpScale: args.bumpScale,
-				// specularMap: THREE.ImageUtils.loadTexture('images/water_4k.png'),
 				specular: new THREE.Color('grey')
 			})
 		);
@@ -215,12 +218,19 @@
 		return new THREE.Mesh(
 			new THREE.SphereGeometry(radius, segments, segments),
 			new THREE.MeshBasicMaterial({
-				map: THREE.ImageUtils.loadTexture('/images/galaxy_starfield.png'),
+				map: THREE.ImageUtils.loadTexture('/images/galaxy-starfield.png'),
 				side: THREE.BackSide
 			})
 		);
 	}
 
+	function onWindowResize() {
+		camera.aspect = window.innerWidth / window.innerHeight;
+		camera.updateProjectionMatrix();
+		renderer.setSize(window.innerWidth, window.innerHeight);
+	}
+
+	// Get query variable from URL
 	function getQueryVariable(variable) {
 		var query = window.location.search.substring(1);
 		var vars = query.split('&');
@@ -233,51 +243,52 @@
 		return false;
 	}
 
-	/* Track original opacities */
+	// Animation Functions
 	function trackOriginalOpacities(mesh) {
-
-	    var opacities = [],
-	        materials = mesh.material.materials ? mesh.material.materials : [mesh.material];
-	    for (var i = 0; i < materials.length; i++) {
-	         materials[i].transparent = true;
-	         opacities.push(materials[i].opacity);
-	    }
-	    mesh.userData.originalOpacities = opacities;
+		var opacities = [],
+			materials = mesh.material.materials
+				? mesh.material.materials
+				: [mesh.material];
+		for (var i = 0; i < materials.length; i++) {
+			materials[i].transparent = true;
+			opacities.push(materials[i].opacity);
+		}
+		mesh.userData.originalOpacities = opacities;
 	}
 
-	/* Fade mesh */
 	function fadeMesh(mesh, direction, options) {
-    options = options || {};
-    // set and check
-    var current = { percentage : direction == "in" ? 1 : 0 },
-    // this check is used to work with normal and multi materials.
-    mats = mesh.material.materials ?
-             mesh.material.materials : [mesh.material],
-
-     originals = mesh.userData.originalOpacities,
-     easing = options.easing || TWEEN.Easing.Linear.None,
-     duration = options.duration || 2000;
-    // check to make sure originals exist
-    if( !originals ) {
-         console.error("Fade error: originalOpacities not defined, use trackOriginalOpacities");
-          return;
-    }
-    // tween opacity back to originals
-    var tweenOpacity = new TWEEN.Tween(current)
-      .to({ percentage: direction == "in" ? 0 : 1 }, duration)
-      .easing(easing)
-      .onUpdate(function() {
-           for (var i = 0; i < mats.length; i++) {
-              mats[i].opacity = originals[i] * current.percentage;
-           }
-       })
-       .onComplete(function(){
-            if(options.callback){
-                 options.callback();
-            }
-       });
-    tweenOpacity.start();
-    return tweenOpacity;
+		options = options || {};
+		// set and check
+		var current = { percentage: direction == 'in' ? 1 : 0 },
+			// this check is used to work with normal and multi materials.
+			mats = mesh.material.materials
+				? mesh.material.materials
+				: [mesh.material],
+			originals = mesh.userData.originalOpacities,
+			easing = options.easing || TWEEN.Easing.Linear.None,
+			duration = options.duration || 2000;
+		// check to make sure originals exist
+		if (!originals) {
+			console.error(
+				'Fade error: originalOpacities not defined, use trackOriginalOpacities'
+			);
+			return;
+		}
+		// tween opacity back to originals
+		var tweenOpacity = new TWEEN.Tween(current)
+			.to({ percentage: direction == 'in' ? 0 : 1 }, duration)
+			.easing(easing)
+			.onUpdate(function() {
+				for (var i = 0; i < mats.length; i++) {
+					mats[i].opacity = originals[i] * current.percentage;
+				}
+			})
+			.onComplete(function() {
+				if (options.callback) {
+					options.callback();
+				}
+			});
+		tweenOpacity.start();
+		return tweenOpacity;
 	}
-
 })();
