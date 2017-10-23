@@ -5,6 +5,7 @@
 The State Library of NSW owns a stunning collection of maps from the 17th and 18th centuries. Normally under lock and key in our underground stacks, Meridian brings these artefacts to life as interactive 3D globes.
 
 View it here: http://dxlab.sl.nsw.gov.au/meridian
+Read the blog post here: https://dxlab.sl.nsw.gov.au/making-meridian/
 
 ![Meridian website](http://dxlab.sl.nsw.gov.au/meridian/images/screenshot.jpg)
 
