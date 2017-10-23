@@ -17,13 +17,13 @@
 			name: "Miranda's World Map",
 			radius: radius,
 			segments: segments,
-			map: '/images/miranda-map-unprojected-4000px.jpg',
+			map: './images/miranda-map-unprojected-4000px.jpg',
 			bumpMap:
-				'/images/miranda-map-unprojected-4000px-bump.gif',
+				'./images/miranda-map-unprojected-4000px-bump.gif',
 			bumpScale: 0.0008,
 			content:
 				'<p>This manuscript map was produced in Lisbon in 1706, using a cylindrical projection. The coastlines of the Australian continent are duplicated on either side of the map so that when the map is wrapped around a globe, the edges overlap in line with the east coast of Australia.</p>',
-			imageUrl: '/images/miranda-map-original.jpg',
+			imageUrl: './images/miranda-map-original.jpg',
 			artist: 'Joseph Da Costa E Miranda',
 			year: '1706',
 			language: 'Portuguese',
@@ -34,12 +34,12 @@
 			name: 'Coronelli Terrestrial Globe',
 			radius: radius,
 			segments: segments,
-			map: '/images/coronelli-terrestrial-map-unprojected-4000px.jpg',
-			bumpMap: '/images/coronelli-terrestrial-map-unprojected-4000px-bump.gif',
+			map: './images/coronelli-terrestrial-map-unprojected-4000px.jpg',
+			bumpMap: './images/coronelli-terrestrial-map-unprojected-4000px-bump.gif',
 			bumpScale: 0.0005,
 			content:
 				'<p>This set of 24 gores and 2 polar calottes were printed from copper engravings in 1693. Italian cartographer Vincenzo Maria Coronelli began the engravings for the 110 cm globes in 1688 following the success of the  two large 4 metre globes produced for King Louis XIV in the early 1680s.</p>',
-			imageUrl: '/images/coronelli-terrestrial-map-original.jpg',
+			imageUrl: './images/coronelli-terrestrial-map-original.jpg',
 			artist: 'Vincenzo Maria Coronelli',
 			year: '1693',
 			language: 'Italian',
@@ -218,7 +218,7 @@
 		return new THREE.Mesh(
 			new THREE.SphereGeometry(radius, segments, segments),
 			new THREE.MeshBasicMaterial({
-				map: THREE.ImageUtils.loadTexture('/images/galaxy-starfield.png'),
+				map: THREE.ImageUtils.loadTexture('./images/galaxy-starfield.png'),
 				side: THREE.BackSide
 			})
 		);

@@ -30,7 +30,7 @@ module.exports = {
       title: 'Foo',
       filename: 'index.html',
       template: 'src/index.html',
-      inject: true,
+      inject: false,
       minify: false,
       chunks: 'all',
       chunksSortMode: 'auto'
