@@ -4,9 +4,9 @@
 
 The State Library of NSW owns a stunning collection of maps from the 17th and 18th centuries. Normally under lock and key in our underground stacks, Meridian brings these artefacts to life as interactive 3D globes.
 
-![Meridian website](http://dxlab.sl.nsw.gov.au/meridian/images/screenshot.jpg)
-
 View it here: http://dxlab.sl.nsw.gov.au/meridian
+
+![Meridian website](http://dxlab.sl.nsw.gov.au/meridian/images/screenshot.jpg)
 
 This repository contains all code and project files.
 
@@ -46,11 +46,15 @@ Then go to `http://localhost:3001` to see the app in action! `Browsersync` will 
 
 Just copy the `/build` folder to any server.
 
-Internally, we use `now` for deployments. We also use `dotenv`, so make sure you have a .env and .env.production file.
+Internally, we use `now` for deployments. We also use `dotenv`, so make sure you have a `.env` and `.env.production` file.
 
 ```
 $ npm run deploy # Deploys staging version
 $ npm run deploy-production # Deploys production version
+
+# Make sure .env file has this:
+GOOGLE_ANALYTICS_ID=UA-XXXXXX-XX
+# This enables separate analytics accounts for testing and production.
 ```
 
 ## Credits
