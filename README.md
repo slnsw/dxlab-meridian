@@ -2,13 +2,13 @@
 
 ## Introduction
 
-The State Library of NSW has a unique collection of maps from the 17th and 18th century. The Meridian project seeks to reimagine these maps as interactive 3D globes using web technologies.
+The State Library of NSW owns a stunning collection of maps from the 17th and 18th centuries. Normally under lock and key in our underground stacks, Meridian brings these artefacts to life as interactive 3D globes.
 
 ![Meridian website](http://dxlab.sl.nsw.gov.au/meridian/images/screenshot.jpg)
 
 View it here: http://dxlab.sl.nsw.gov.au/meridian
 
-This repository contains all code and project files. It is freely available for re-use and reference.
+This repository contains all code and project files.
 
 ### Maps
 
@@ -58,3 +58,7 @@ $ npm run deploy-production # Deploys production version
 Many thanks goes to [Bjørn Sandvik](https://github.com/turban) from [mastermaps.com](http://mastermaps.com). His tutorial (http://blog.mastermaps.com/2013/09/creating-webgl-earth-with-threejs.html) provided the basis for this project.
 
 In addition, [David Rumsey](https://www.davidrumsey.com/) has kindly given us permission to use his unprojected image of the [Coronelli Terrestrial Map](https://www.davidrumsey.com/luna/servlet/detail/RUMSEY~8~1~288576~90060319:Composite--Unprojected--Geographic-?qvq=w4s:/what%2FGlobe%2Bgores%2F;lc:RUMSEY~8~1&mi=5&trs=42#).
+
+## License
+
+This project is licensed under the Creative Commons Attribution 4.0 International license. See [LICENSE](LICENSE) for more detail.
