@@ -175,16 +175,16 @@
 		spheres[globeKey].rotation.y += 0.0005;
 
 		// keep light source near camera
-		let p = camera.position;
-		let q = new THREE.Vector3();
+		var p = camera.position;
+		var q = new THREE.Vector3();
 		q.x = p.x;
 		q.y = p.y;
 		q.z = p.z;
-		let yaxis = new THREE.Vector3(0, 1, 0);
-		let angle = Math.PI / 4;
+		var yaxis = new THREE.Vector3(0, 1, 0);
+		var angle = Math.PI / 4;
 		q.applyAxisAngle(yaxis, angle);
-		let zaxis = new THREE.Vector3(0, 0, 1);
-		let angle2 = Math.PI / 6;
+		var zaxis = new THREE.Vector3(0, 0, 1);
+		var angle2 = Math.PI / 6;
 		q.applyAxisAngle(zaxis, angle2);
 		light.position.copy(q);
 
