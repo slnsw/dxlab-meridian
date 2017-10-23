@@ -167,10 +167,15 @@ nav {
   padding-left: 0;
   margin-bottom: 1em;
   text-align: left;
+  cursor: pointer;
 }
 
   .list-button:last-child {
     margin-bottom: 0;
+  }
+
+  .list-button:hover {
+    text-decoration: underline;
   }
 
 .list-button.active {
