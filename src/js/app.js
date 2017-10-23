@@ -8,6 +8,7 @@
 	var radius = 0.5;
 	var segments = 32;
 	var rotation = 15;
+	var rotationSpeed = 0.0005;
 	var width = window.innerWidth;
 	var height = window.innerHeight;
 
@@ -176,7 +177,7 @@
 	function render() {
 		controls.update();
 		// slowly rotate the globe
-		spheres[globeKey].rotation.y += 0.0005;
+		spheres[globeKey].rotation.y += rotationSpeed;
 
 		// keep light source near camera
 		var p = camera.position;
