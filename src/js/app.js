@@ -24,7 +24,7 @@
 			content:
 				'<p>This manuscript map was produced in Lisbon in 1706, using a cylindrical projection. The coastlines of the Australian continent are duplicated on either side of the map so that when the map is wrapped around a globe, the edges overlap in line with the east coast of Australia.</p>',
 			imageUrl: './images/miranda-map-original.jpg',
-			artist: 'Joseph Da Costa E Miranda',
+			artist: 'Joseph Da Costa e Miranda',
 			year: '1706',
 			language: 'Portuguese',
 			url:
@@ -59,6 +59,7 @@
 			content: null,
 			year: null,
 			language: null,
+			isLoading: true,
 			isMoreModalOpen: false,
 			isAboutModalOpen: false,
 			isGlobeMenuOpen: false
@@ -119,6 +120,9 @@
 				this.$data.isAboutModalOpen = false;
 				this.$data.isMoreModalOpen = false;
 				this.$data.isGlobeMenuOpen = false;
+			},
+			hideLoading: function() {
+				this.$data.isLoading = false;
 			}
 		}
 	});
@@ -157,7 +161,7 @@
 	var spheres = createSpheres(globeConfigs);
 	spheres[globeKey].rotation.y = rotation;
 	spheres[globeKey].material.transparent = true;
-	scene.add(spheres[globeKey]);
+	// scene.add(spheres[globeKey]);
 
 	var stars = createStars(90, 64);
 	scene.add(stars);
@@ -191,6 +195,35 @@
 		requestAnimationFrame(render);
 		renderer.render(scene, camera);
 	}
+
+	// instantiate a loader
+	var loader = new THREE.ImageLoader();
+
+	// load a image resource
+	loader.load(
+		// resource URL
+		'./images/miranda-map-unprojected-4000px.jpg',
+		// Function when resource is loaded
+		function ( image ) {
+			// do something with it
+			scene.add(spheres[globeKey]);
+			vueApp.hideLoading();
+
+
+			// like drawing a part of it on a canvas
+			// var canvas = document.createElement( 'canvas' );
+			// var context = canvas.getContext( '2d' );
+			// context.drawImage( image, 100, 100 );
+		},
+		// Function called when download progresses
+		function ( xhr ) {
+			console.log( (xhr.loaded / xhr.total * 100) + '% loaded' );
+		},
+		// Function called when download errors
+		function ( xhr ) {
+			console.log( 'An error happened' );
+		}
+	);
 
 	function createSphere(args) {
 		return new THREE.Mesh(
