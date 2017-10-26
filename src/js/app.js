@@ -45,7 +45,8 @@
 			year: '1693',
 			language: 'Italian',
 			url:
-				'http://digital.sl.nsw.gov.au/delivery/DeliveryManagerServlet?embedded=true&toolbar=false&dps_pid=IE3775803',
+				// 'http://digital.sl.nsw.gov.au/delivery/DeliveryManagerServlet?embedded=true&toolbar=false&dps_pid=IE3775803',
+				'http://digital.sl.nsw.gov.au/delivery/DeliveryManagerServlet?embedded=true&toolbar=false&dps_pid=FL4515353',
 			credit: 'David Rumsey'
 		}
 	};
