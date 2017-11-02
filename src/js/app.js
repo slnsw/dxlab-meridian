@@ -9,6 +9,7 @@
 	var segments = 32;
 	var rotation = 15;
 	var rotationSpeed = 0.0005;
+	// var rotationSpeed = 0.014;
 	var width = window.innerWidth;
 	var height = window.innerHeight;
 
