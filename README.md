@@ -55,6 +55,7 @@ $ npm run deploy-production # Deploys production version
 
 # Make sure .env file has this:
 GOOGLE_ANALYTICS_ID=UA-XXXXXX-XX
+FB_APP_ID=XXXXXXXXXXXXXXXXXX
 # This enables separate analytics accounts for testing and production.
 ```
 

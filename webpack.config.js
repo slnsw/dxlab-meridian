@@ -8,6 +8,7 @@ var CopyWebpackPlugin = require('copy-webpack-plugin');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 
 console.log(`GOOGLE_ANALYTICS_ID: ${process.env.GOOGLE_ANALYTICS_ID}`);
+console.log(`FB_APP_ID: ${process.env.FB_APP_ID}`);
 
 module.exports = {
 	context: path.join(__dirname, '/'),
@@ -37,8 +38,12 @@ module.exports = {
     }),
     new HtmlReplaceWebpackPlugin([
       {
-        pattern: '@@google-analytics-id',
+        pattern: '@@GOOGLE_ANALYTICS_ID',
         replacement: process.env.GOOGLE_ANALYTICS_ID
+      },
+			{
+        pattern: '@@FB_APP_ID',
+        replacement: process.env.FB_APP_ID
       },
 			{
 				pattern: 'app.js',
