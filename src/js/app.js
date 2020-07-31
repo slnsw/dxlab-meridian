@@ -152,6 +152,8 @@
 	);
 	camera.position.z = 1.5;
 	camera.position.y = 0.2;
+	camera.minFov = 5;
+	camera.maxFov = cameraDepth;
 
 	var renderer = new THREE.WebGLRenderer();
 	renderer.setSize(width, height);

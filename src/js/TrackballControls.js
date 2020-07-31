@@ -177,7 +177,10 @@ THREE.TrackballControls = function ( object, domElement ) {
 
 			if ( factor !== 1.0 && factor > 0.0 ) {
 
-				_eye.multiplyScalar( factor );
+				this.object.fov *= factor;
+				if ( this.object.fov < this.object.minFov ) { this.object.fov = this.object.minFov; }
+				if ( this.object.fov > this.object.maxFov ) { this.object.fov = this.object.maxFov; }
+				this.object.updateProjectionMatrix();
 
 				if ( _this.staticMoving ) {
 
