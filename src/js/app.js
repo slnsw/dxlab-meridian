@@ -19,9 +19,14 @@
       name: "Miranda's World Map",
       radius: radius,
       segments: segments,
-      map: "./images/miranda-map-unprojected-biggest2.jpg",
-      //   bumpMap: "./images/miranda-map-unprojected-biggest2-bump.gif", // 20,000px wide
-      bumpMap: "./images/miranda-map-unprojected-biggest2-bump-8kBnW.gif",
+      // map: "./images/miranda-map-unprojected-biggest2.jpg", // 18000x9000
+      map: "./images/miranda-map-unprojected-big16k.jpg", // 16384x8192
+      // map: "./images/miranda-map-unprojected-big12k.jpg", // 12000x6000
+      // map: "./images/miranda-map-unprojected-big8k.jpg", // 8192x4096
+      // map: "./images/miranda-map-unprojected-4000px.jpg", // 4000x2000
+
+      //   bumpMap: "./images/miranda-map-unprojected-biggest2-bump.gif", // 20,000px wide or is it 18,000?
+      bumpMap: "./images/miranda-map-unprojected-biggest2-bump-8kBnW.gif", //8192x4096
       bumpScale: 0.0008,
       content:
         "<p>This manuscript map was produced in Lisbon in 1706, using a cylindrical projection. The coastlines of the Australian continent are duplicated on either side of the map so that when the map is wrapped around a globe, the edges overlap in line with the east coast of Australia.</p>",
@@ -139,7 +144,7 @@
   }
 
   var scene = new THREE.Scene();
-  scene.add(new THREE.AmbientLight(0x333333));
+  scene.add(new THREE.AmbientLight(0x666666));
 
   // Make camera position responsive to browser width
   var cameraDepth = (1 / width) * 10000 + 40;
@@ -157,7 +162,7 @@
   renderer.setSize(width, height);
   webglEl.appendChild(renderer.domElement);
 
-  var light = new THREE.DirectionalLight(0xffffff, 0.7);
+  var light = new THREE.DirectionalLight(0xbbbbbb, 0.5);
   light.position.set(5, 3, 5);
   scene.add(light);
 
@@ -228,17 +233,40 @@
   );
 
   function createSphere(args) {
-    const mapLoader = new THREE.TextureLoader();
+    // create a canvas for our map texture
+    const ctx = document.createElement("canvas").getContext("2d");
+    // image placeholder
+    let img1 = new Image();
+    let imgw, imgh;
+    img1.onload = () => {
+      // when we have the image, find its size
+      imgw = img1.width;
+      imgh = img1.height;
+      // make the canvas big enough
+      ctx.canvas.width = imgw;
+      ctx.canvas.height = imgh;
+      console.log(imgw, imgh);
+      // add image to canvas
+      ctx.drawImage(img1, 0, 0);
+    };
+    // set the image (triggering the above onload)
+    img1.src = args.map;
+
+    // create THREE texture using the canvas
+    const texture = new THREE.CanvasTexture(ctx.canvas);
+    // const mapLoader = new THREE.TextureLoader(); // OLD
+
     const bumpLoader = new THREE.TextureLoader();
     return new THREE.Mesh(
       new THREE.SphereGeometry(args.radius, args.segments, args.segments),
+
+      // new THREE.MeshBasicMaterial({ // was initially using this but bumpMap and Lights broke
       new THREE.MeshPhongMaterial({
-        // map: THREE.ImageUtils.loadTexture(args.map),
-        map: mapLoader.load(args.map),
-        // bumpMap: THREE.ImageUtils.loadTexture(args.bumpMap),
+        // map: mapLoader.load(args.map),  // OLD
+        map: texture,
         bumpMap: bumpLoader.load(args.bumpMap),
         bumpScale: args.bumpScale,
-        specular: new THREE.Color("grey"),
+        specular: new THREE.Color("grey"), // OLD
       })
     );
   }
