@@ -47,7 +47,7 @@ Then go to `http://localhost:3001` to see the app in action! `Browsersync` will 
 
 Just copy the `/build` folder to any server.
 
-Internally, we use `now` for deployments. We also use `dotenv`, so make sure you have a `.env` and `.env.production` file.
+Internally, we use `vercel` for deployments. We also use `dotenv`, so make sure you have a `.env` and `.env.production` file.
 
 ```
 $ npm run deploy # Deploys staging version

@@ -49,6 +49,24 @@
 				// 'http://digital.sl.nsw.gov.au/delivery/DeliveryManagerServlet?embedded=true&toolbar=false&dps_pid=IE3775803',
 				'http://digital.sl.nsw.gov.au/delivery/DeliveryManagerServlet?embedded=true&toolbar=false&dps_pid=FL4515353',
 			credit: 'David Rumsey'
+		},
+		coronelli2: {
+			name: 'Coronelli Celestial Globe',
+			radius: radius,
+			segments: segments,
+			map: './images/coronelli-celestial-map-unprojected-4000px.jpg',
+			bumpMap: './images/coronelli-celestial-map-unprojected-4000px-bump.jpg',
+			bumpScale: 0.0010,
+			content:
+				'<p>Coming soon</p>',
+			imageUrl: './images/coronelli-terrestrial-map-original.jpg',
+			artist: 'Vincenzo Maria Coronelli',
+			year: 'XXXX',
+			language: 'Italian',
+			url:
+				// 'http://digital.sl.nsw.gov.au/delivery/DeliveryManagerServlet?embedded=true&toolbar=false&dps_pid=IE3775803',
+				'http://digital.sl.nsw.gov.au/delivery/DeliveryManagerServlet?embedded=true&toolbar=false&dps_pid=FL4515353',
+			credit: 'David Rumsey'
 		}
 	};
 
