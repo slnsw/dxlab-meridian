@@ -1,4 +1,4 @@
-(function() {
+(function () {
 	// Get current globe slug from URL
 	var globeKey = getQueryVariable('globe')
 		? getQueryVariable('globe')
@@ -20,8 +20,7 @@
 			radius: radius,
 			segments: segments,
 			map: './images/miranda-map-unprojected-4000px.jpg',
-			bumpMap:
-				'./images/miranda-map-unprojected-4000px-bump.gif',
+			bumpMap: './images/miranda-map-unprojected-4000px-bump.gif',
 			bumpScale: 0.0008,
 			content:
 				'<p>This manuscript map was produced in Lisbon in 1706, using a cylindrical projection. The coastlines of the Australian continent are duplicated on either side of the map so that when the map is wrapped around a globe, the edges overlap in line with the east coast of Australia.</p>',
@@ -30,7 +29,7 @@
 			year: '1706',
 			language: 'Portuguese',
 			url:
-				'http://digital.sl.nsw.gov.au/delivery/DeliveryManagerServlet?embedded=true&toolbar=false&dps_pid=IE3538803'
+				'http://digital.sl.nsw.gov.au/delivery/DeliveryManagerServlet?embedded=true&toolbar=false&dps_pid=IE3538803',
 		},
 		coronelli1: {
 			name: 'Coronelli Terrestrial Globe',
@@ -45,10 +44,8 @@
 			artist: 'Vincenzo Maria Coronelli',
 			year: '1693',
 			language: 'Italian',
-			url:
-				// 'http://digital.sl.nsw.gov.au/delivery/DeliveryManagerServlet?embedded=true&toolbar=false&dps_pid=IE3775803',
-				'http://digital.sl.nsw.gov.au/delivery/DeliveryManagerServlet?embedded=true&toolbar=false&dps_pid=FL4515353',
-			credit: 'David Rumsey'
+			url: 'https://collection.sl.nsw.gov.au/digital/gDPymMvpOvzEm',
+			credit: 'David Rumsey',
 		},
 		coronelli2: {
 			name: 'Coronelli Celestial Globe',
@@ -56,18 +53,15 @@
 			segments: segments,
 			map: './images/coronelli-celestial-map-unprojected-4000px.jpg',
 			bumpMap: './images/coronelli-celestial-map-unprojected-4000px-bump.jpg',
-			bumpScale: 0.0010,
-			content:
-				'<p>Coming soon</p>',
-			imageUrl: './images/coronelli-terrestrial-map-original.jpg',
+			bumpScale: 0.001,
+			content: '<p>Coming soon</p>',
+			imageUrl: './images/coronelli-celestial-map-original.jpg',
 			artist: 'Vincenzo Maria Coronelli',
 			year: 'XXXX',
 			language: 'Italian',
-			url:
-				// 'http://digital.sl.nsw.gov.au/delivery/DeliveryManagerServlet?embedded=true&toolbar=false&dps_pid=IE3775803',
-				'http://digital.sl.nsw.gov.au/delivery/DeliveryManagerServlet?embedded=true&toolbar=false&dps_pid=FL4515353',
-			credit: 'David Rumsey'
-		}
+			url: 'https://collection.sl.nsw.gov.au/digital/GDVq84ND2be3G',
+			credit: 'David Rumsey',
+		},
 	};
 
 	// Set up Vue instance
@@ -83,10 +77,10 @@
 			isLoading: true,
 			isMoreModalOpen: false,
 			isAboutModalOpen: false,
-			isGlobeMenuOpen: false
+			isGlobeMenuOpen: false,
 		},
 		methods: {
-			changeGlobe: function(newGlobeKey) {
+			changeGlobe: function (newGlobeKey) {
 				var oldGlobeKey = this.$data.globeKey;
 				var oldGlobe = spheres[oldGlobeKey];
 				var newGlobe = spheres[newGlobeKey];
@@ -101,9 +95,9 @@
 					// Animate globes
 					TweenLite.to(oldGlobe.material, 0.2, {
 						opacity: 0,
-						onComplete: function() {
+						onComplete: function () {
 							scene.remove(oldGlobe);
-						}
+						},
 					});
 					TweenLite.from(newGlobe.material, 0.2, { opacity: 0, delay: 0.2 });
 
@@ -124,28 +118,28 @@
 
 				this.$data.isGlobeMenuOpen = false;
 			},
-			toggleMoreModal: function() {
+			toggleMoreModal: function () {
 				this.$data.isMoreModalOpen = !this.$data.isMoreModalOpen;
 				this.$data.isAboutModalOpen = false;
 				this.$data.isGlobeMenuOpen = false;
 			},
-			toggleAboutModal: function() {
+			toggleAboutModal: function () {
 				this.$data.isAboutModalOpen = !this.$data.isAboutModalOpen;
 				this.$data.isMoreModalOpen = false;
 				this.$data.isGlobeMenuOpen = false;
 			},
-			toggleGlobeMenu: function() {
+			toggleGlobeMenu: function () {
 				this.$data.isGlobeMenuOpen = !this.$data.isGlobeMenuOpen;
 			},
-			closeModals: function() {
+			closeModals: function () {
 				this.$data.isAboutModalOpen = false;
 				this.$data.isMoreModalOpen = false;
 				this.$data.isGlobeMenuOpen = false;
 			},
-			hideLoading: function() {
+			hideLoading: function () {
 				this.$data.isLoading = false;
-			}
-		}
+			},
+		},
 	});
 
 	// Set up Three JS scene and objects
@@ -160,7 +154,7 @@
 	scene.add(new THREE.AmbientLight(0x333333));
 
 	// Make camera position responsive to browser width
-	var cameraDepth = 1 / width * 10000 + 40;
+	var cameraDepth = (1 / width) * 10000 + 40;
 
 	var camera = new THREE.PerspectiveCamera(
 		cameraDepth,
@@ -225,11 +219,10 @@
 		// resource URL
 		'./images/miranda-map-unprojected-4000px.jpg',
 		// Function when resource is loaded
-		function ( image ) {
+		function (image) {
 			// do something with it
 			scene.add(spheres[globeKey]);
 			vueApp.hideLoading();
-
 
 			// like drawing a part of it on a canvas
 			// var canvas = document.createElement( 'canvas' );
@@ -237,12 +230,12 @@
 			// context.drawImage( image, 100, 100 );
 		},
 		// Function called when download progresses
-		function ( xhr ) {
-			console.log( (xhr.loaded / xhr.total * 100) + '% loaded' );
+		function (xhr) {
+			console.log((xhr.loaded / xhr.total) * 100 + '% loaded');
 		},
 		// Function called when download errors
-		function ( xhr ) {
-			console.log( 'An error happened' );
+		function (xhr) {
+			console.log('An error happened');
 		}
 	);
 
@@ -253,7 +246,7 @@
 				map: THREE.ImageUtils.loadTexture(args.map),
 				bumpMap: THREE.ImageUtils.loadTexture(args.bumpMap),
 				bumpScale: args.bumpScale,
-				specular: new THREE.Color('grey')
+				specular: new THREE.Color('grey'),
 			})
 		);
 	}
@@ -261,7 +254,7 @@
 	function createSpheres(globeConfigs) {
 		const result = {};
 
-		Object.keys(globeConfigs).forEach(function(slug) {
+		Object.keys(globeConfigs).forEach(function (slug) {
 			result[slug] = createSphere(globeConfigs[slug]);
 		});
 
@@ -273,7 +266,7 @@
 			new THREE.SphereGeometry(radius, segments, segments),
 			new THREE.MeshBasicMaterial({
 				map: THREE.ImageUtils.loadTexture('./images/galaxy-starfield.png'),
-				side: THREE.BackSide
+				side: THREE.BackSide,
 			})
 		);
 	}
@@ -332,12 +325,12 @@
 		var tweenOpacity = new TWEEN.Tween(current)
 			.to({ percentage: direction == 'in' ? 0 : 1 }, duration)
 			.easing(easing)
-			.onUpdate(function() {
+			.onUpdate(function () {
 				for (var i = 0; i < mats.length; i++) {
 					mats[i].opacity = originals[i] * current.percentage;
 				}
 			})
-			.onComplete(function() {
+			.onComplete(function () {
 				if (options.callback) {
 					options.callback();
 				}

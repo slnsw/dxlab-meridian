@@ -47,16 +47,10 @@ Then go to `http://localhost:3001` to see the app in action! `Browsersync` will 
 
 Just copy the `/build` folder to any server.
 
-Internally, we use `vercel` for deployments. We also use `dotenv`, so make sure you have a `.env` and `.env.production` file.
+Internally, we use `vercel` for deployments. Environments variables are on Vercel's dashboard.
 
 ```
-$ npm run deploy # Deploys staging version
-$ npm run deploy-production # Deploys production version
-
-# Make sure .env file has this:
-GOOGLE_ANALYTICS_ID=UA-XXXXXX-XX
-FB_APP_ID=XXXXXXXXXXXXXXXXXX
-# This enables separate analytics accounts for testing and production.
+$ npm run deploy
 ```
 
 ## Credits

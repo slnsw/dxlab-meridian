@@ -2,7 +2,7 @@
   "name": "dxlab-meridian",
   "version": "0.0.1",
   "engines": {
-    "node": "~8.4.0"
+    "node": "~10"
   },
   "description": "The State Library of NSW's unique collection of 17th century maps reimagined as interactive 3D globes.",
   "main": "index.js",
@@ -10,8 +10,8 @@
     "start": "ENV=production node index.js",
     "dev": "ENV=development node index.js",
     "build": "webpack",
-    "deploy": "now --dotenv",
-    "deploy-production": "now --dotenv=.env.production",
+    "deploy": "vercel",
+    "deploy:prod": "vercel --prod",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Kaho Cheung <kaho.cheung@sl.nsw.gov.au> (https://github.com/unkleho)",
