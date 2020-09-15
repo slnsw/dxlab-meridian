@@ -5,6 +5,8 @@ build/
 .env
 .env.production
 npm-debug.log
+*.code-workspace
+
 public/images/Miranda_Map_Working_Wraparound_15000px.png
 public/images/Miranda_Map_Working_Wraparound.png
 
