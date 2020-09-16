@@ -105,10 +105,11 @@ nav {
 
 .menu-title {
   display: inline-block;
-  font-size: 1em;
   /*background-color: rgba(0, 0, 0, 0.2);*/
   padding: 0.4em;
   margin: -0.6em 0 0 -0.4em;
+  font-size: 1em;
+  font-family: 'Barlow', sans-serif;
 }
 
   @media(min-width: 40em) {
@@ -160,7 +161,8 @@ nav {
   position: relative;
   border: none;
   background-color: transparent;
-  font-family: 'Lekton', sans-serif;
+  /* font-family: 'Lekton', sans-serif; */
+  font-family: 'Barlow', sans-serif;
   color: #EEE;
   font-size: 0.8em;
   text-shadow: 1px 1px 0px black;
@@ -188,7 +190,7 @@ nav {
 
   @media (min-width: 40em) {
     .list-button {
-      margin-bottom: 0;
+      margin-bottom: 2px;
     }
 
     .list-button.active {
@@ -289,7 +291,7 @@ nav {
     right: 3em;
     width: 50%;
     max-width: 34em;
-    height: auto;
+    height: calc(100% - 6em);
     padding: 2em;
     padding-bottom: 5em;
   }
@@ -380,7 +382,7 @@ nav {
     padding: 2em;
   }
   100% {
-    height: auto;
+    height: calc(100% - 6em);
   }
 }
 
@@ -423,6 +425,10 @@ nav {
 }
 
   .modal__content {
+    height: 100%;
+    overflow-x: hidden;
+    overflow-y: auto;
+    padding-bottom: 2rem;
     transition: all 0.8s cubic-bezier(0.86, 0, 0.07, 1);
     opacity: 1;
   }
@@ -435,8 +441,10 @@ nav {
   .modal__content h1 {
     margin-top: 0;
     margin-bottom: 0.4em;
-    font-size: 1.6em;
     max-width: calc(100% - 4em);
+    font-size: 1.6em;
+    font-family: 'Barlow', sans-serif;    
+    font-weight: 700;
     line-height: 1.2;
   }
 
@@ -444,6 +452,10 @@ nav {
     width: 100%;
     height: auto;
     margin-right: 1em;
+  }
+
+  .modal__content p {
+    font-family: 'Barlow', sans-serif;
   }
 
   .modal__field {

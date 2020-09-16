@@ -410,26 +410,24 @@ THREE.TrackballControls = function ( object, domElement ) {
 	}
 
 	function mousewheel( event ) {
+		if (_this.enabled === false) return;
 
-		if ( _this.enabled === false ) return;
-
-		event.preventDefault();
+		// event.preventDefault();
 		event.stopPropagation();
 
 		var delta = 0;
 
-		if ( event.wheelDelta ) { // WebKit / Opera / Explorer 9
+		if (event.wheelDelta) {
+			// WebKit / Opera / Explorer 9
 
 			delta = event.wheelDelta / 40;
+		} else if (event.detail) {
+			// Firefox
 
-		} else if ( event.detail ) { // Firefox
-
-			delta = - event.detail / 3;
-
+			delta = -event.detail / 3;
 		}
 
 		_zoomStart.y += delta * 0.01;
-
 	}
 
 	function touchstart( event ) {

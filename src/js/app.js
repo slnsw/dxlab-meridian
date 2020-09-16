@@ -12,6 +12,7 @@
 	// var rotationSpeed = 0.014;
 	var width = window.innerWidth;
 	var height = window.innerHeight;
+	var disableControls = false;
 
 	// Globe configurations
 	var globeConfigs = {
@@ -28,8 +29,7 @@
 			artist: 'Joseph Da Costa e Miranda',
 			year: '1706',
 			language: 'Portuguese',
-			url:
-				'http://digital.sl.nsw.gov.au/delivery/DeliveryManagerServlet?embedded=true&toolbar=false&dps_pid=IE3538803',
+			url: 'https://collection.sl.nsw.gov.au/record/74VvkA2dEL83',
 		},
 		coronelli1: {
 			name: 'Coronelli Terrestrial Globe',
@@ -44,7 +44,7 @@
 			artist: 'Vincenzo Maria Coronelli',
 			year: '1693',
 			language: 'Italian',
-			url: 'https://collection.sl.nsw.gov.au/digital/gDPymMvpOvzEm',
+			url: 'https://collection.sl.nsw.gov.au/record/74VvAy5EdPgg',
 			credit: 'David Rumsey',
 		},
 		coronelli2: {
@@ -54,12 +54,14 @@
 			map: './images/coronelli-celestial-map-unprojected-4000px.jpg',
 			bumpMap: './images/coronelli-celestial-map-unprojected-4000px-bump.jpg',
 			bumpScale: 0.001,
-			content: '<p>Coming soon</p>',
+			content: `<p>Vincenzo Coronelli published the gores for this celestial globe in 1693. They were printed in Paris by Jean Baptiste Nolin, the engraver to the King of France.</p>
+			<p>Coronelli designed this globe to make the observer feel as though they were looking into the sky from the earth. The engraving is incredibly detailed with the names of the constellations written in Latin, Italian, French, Greek, Arabic.</p>
+			<p>Comets are included with little circles of stars and the dates when they appeared. Despite the elegant and accomplished production, Coronelli’s lack of attention to scientific details places it as both a high point and low point of globe production in the late seventeenth century.</p>`,
 			imageUrl: './images/coronelli-celestial-map-original.jpg',
 			artist: 'Vincenzo Maria Coronelli',
-			year: 'XXXX',
+			year: '1693',
 			language: 'Italian',
-			url: 'https://collection.sl.nsw.gov.au/digital/GDVq84ND2be3G',
+			url: 'https://collection.sl.nsw.gov.au/record/74VvABRw02K3',
 			credit: 'David Rumsey',
 		},
 	};
@@ -122,11 +124,13 @@
 				this.$data.isMoreModalOpen = !this.$data.isMoreModalOpen;
 				this.$data.isAboutModalOpen = false;
 				this.$data.isGlobeMenuOpen = false;
+				disableControls = this.$data.isMoreModalOpen;
 			},
 			toggleAboutModal: function () {
 				this.$data.isAboutModalOpen = !this.$data.isAboutModalOpen;
 				this.$data.isMoreModalOpen = false;
 				this.$data.isGlobeMenuOpen = false;
+				disableControls = this.$data.isAboutModalOpen;
 			},
 			toggleGlobeMenu: function () {
 				this.$data.isGlobeMenuOpen = !this.$data.isGlobeMenuOpen;
@@ -189,7 +193,10 @@
 
 	// ThreeJS Functions
 	function render() {
-		controls.update();
+		if (!disableControls) {
+			controls.update();
+		}
+
 		// slowly rotate the globe
 		spheres[globeKey].rotation.y += rotationSpeed;
 
