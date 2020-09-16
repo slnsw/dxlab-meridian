@@ -54,9 +54,8 @@
 			map: './images/coronelli-celestial-map-unprojected-4000px.jpg',
 			bumpMap: './images/coronelli-celestial-map-unprojected-4000px-bump.jpg',
 			bumpScale: 0.001,
-			content: `<p>Vincenzo Coronelli published the gores for this celestial globe in 1693. They were printed in Paris by Jean Baptiste Nolin, the engraver to the King of France.</p>
-			<p>Coronelli designed this globe to make the observer feel as though they were looking into the sky from the earth. The engraving is incredibly detailed with the names of the constellations written in Latin, Italian, French, Greek, Arabic.</p>
-			<p>Comets are included with little circles of stars and the dates when they appeared. Despite the elegant and accomplished production, Coronelli’s lack of attention to scientific details places it as both a high point and low point of globe production in the late seventeenth century.</p>`,
+			content:
+				'<p>Vincenzo Coronelli published the gores for this celestial globe in 1693. They were printed in Paris by Jean Baptiste Nolin, the engraver to the King of France.</p><p>Coronelli designed this globe to make the observer feel as though they were looking into the sky from the earth. The engraving is incredibly detailed with the names of the constellations written in Latin, Italian, French, Greek, Arabic.</p><p>Comets are included with little circles of stars and the dates when they appeared. Despite the elegant and accomplished production, Coronelli’s lack of attention to scientific details places it as both a high point and low point of globe production in the late seventeenth century.</p>',
 			imageUrl: './images/coronelli-celestial-map-original.jpg',
 			artist: 'Vincenzo Maria Coronelli',
 			year: '1693',
