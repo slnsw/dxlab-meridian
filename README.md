@@ -13,8 +13,9 @@ This repository contains all code and project files.
 
 ### Maps
 
-- [Miranda's World Map](http://digital.sl.nsw.gov.au/delivery/DeliveryManagerServlet?embedded=true&toolbar=false&dps_pid=IE3538803)
-- [Coronelli Terrestrial Globe](http://digital.sl.nsw.gov.au/delivery/DeliveryManagerServlet?embedded=true&toolbar=false&dps_pid=IE3775803)
+- [Miranda's World Map](https://collection.sl.nsw.gov.au/record/74VvkA2dEL83)
+- [Coronelli Terrestrial Globe](https://collection.sl.nsw.gov.au/record/74VvAy5EdPgg)
+- [Coronelli Celestial Globe](https://collection.sl.nsw.gov.au/record/74VvABRw02K3)
 
 With more to come...
 

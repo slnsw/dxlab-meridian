@@ -138,6 +138,7 @@
 				this.$data.isAboutModalOpen = false;
 				this.$data.isMoreModalOpen = false;
 				this.$data.isGlobeMenuOpen = false;
+				disableControls = false;
 			},
 			hideLoading: function () {
 				this.$data.isLoading = false;
