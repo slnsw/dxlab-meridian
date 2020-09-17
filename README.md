@@ -58,7 +58,7 @@ $ npm run deploy
 
 Many thanks goes to [Bjørn Sandvik](https://github.com/turban) from [mastermaps.com](http://mastermaps.com). His tutorial (http://blog.mastermaps.com/2013/09/creating-webgl-earth-with-threejs.html) provided the basis for this project.
 
-In addition, [David Rumsey](https://www.davidrumsey.com/) has kindly given us permission to use his unprojected image of the [Coronelli Terrestrial Map](https://www.davidrumsey.com/luna/servlet/detail/RUMSEY~8~1~288576~90060319:Composite--Unprojected--Geographic-?qvq=w4s:/what%2FGlobe%2Bgores%2F;lc:RUMSEY~8~1&mi=5&trs=42#).
+In addition, [David Rumsey](https://www.davidrumsey.com/) has kindly given us permission to use his unprojected image of the [Coronelli Terrestrial Map](https://www.davidrumsey.com/luna/servlet/detail/RUMSEY~8~1~288576~90060319:Composite--Unprojected--Geographic-?qvq=w4s:/what%2FGlobe%2Bgores%2F;lc:RUMSEY~8~1&mi=5&trs=42#) and [Coronelli Celestial Map](https://www.davidrumsey.com/luna/servlet/detail/RUMSEY~8~1~327948~90096567:Composite--Unprojected--Geographic-?sort=pub_list_no_initialsort%2Cpub_list_no_initialsort%2Cpub_date%2Cpub_date&qvq=q:10570.000;sort:pub_list_no_initialsort%2Cpub_list_no_initialsort%2Cpub_date%2Cpub_date;lc:RUMSEY~8~1&mi=1&trs=42).
 
 ## License
 
