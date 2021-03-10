@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0"/>
+		<title>Meridian | DX Lab - State Library of NSW</title>
+		<link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+		<link href="https://fonts.googleapis.com/css?family=Lekton:400,400i,700" rel="stylesheet" />
+		<link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;700&display=swap" rel="stylesheet">
+		<link href="./styles/base.css" rel="stylesheet" />
+		<link href="./styles/styles.css" rel="stylesheet" />
+
+		<meta name="twitter:title" content="DX Lab: Meridian" />
+		<meta name="twitter:card" content="summary" />
+		<meta name="twitter:site" content="@statelibrarynsw" />
+		<meta name="twitter:creator" content="@unkleho" />
+		<meta name="twitter:image:src" content="https://dxlab.sl.nsw.gov.au/meridian/images/social-image.jpg" />
+		<meta property="fb:app_id" content="@@FB_APP_ID" />
+		<meta property="og:url" content="http://dxlab.sl.nsw.gov.au/meridian/" />
+		<meta property="og:type" content="article" />
+		<meta property="og:title" content="DX Lab: Meridian" />
+		<meta property="og:description" content="17th and 18th century maps from the State Library of NSW's collection brought to life as interactive 3D globes." />
+		<meta property="og:image" content="https://dxlab.sl.nsw.gov.au/meridian/images/social-image.jpg" />
+	</head>
+
+	<body>
+		<div id="app" v-cloak>
+			<transition name="modal-underlay-animation">
+				<div
+					class="modal-underlay"
+					v-on:click="closeModals"
+					v-if="isMoreModalOpen || isAboutModalOpen || isGlobeMenuOpen"
+				></div>
+			</transition>
+
+			<header>
+				<!-- <div class="logo-holder">
+					<a href="http://dxlab.sl.nsw.gov.au"><img class="logo-dxlab" src="./images/logo-dxlab.png" alt="DX Lab website" /></a><br/>
+					<h1 style="margin-top: 0.1em; font-size: 0.8em; font-weight: 400; letter-spacing: 0.2em; text-transform: uppercase; margin-bottom: 0em;">Meridian</h1>
+				</div>
+				<div class="heading-divider"></div> -->
+
+				<!-- <nav>
+					<div class="menu-title" v-if="!isGlobeMenuOpen" v-on:click="toggleGlobeMenu">{{ items[globeKey].name }} <span>▼</span></div>
+
+					<div class="menu" v-bind:class="{ 'is-active-mobile': isGlobeMenuOpen }">
+						<button
+							class="list-button"
+							v-bind:class="{ active: globeKey === key }"
+							v-for="(item, key) in items"
+							v-on:click="changeGlobe(key)"
+						>
+							{{ item.name }} <span v-if="globeKey === key">◄</span>
+						</button>
+					</div>
+				</nav> -->
+
+			</header>
+
+			<!-- <a href="http://sl.nsw.gov.au"><img class="logo-slnsw" src="./images/logo-slnsw-white-digital.png" alt="State Library of NSW website" /></a> -->
+
+			<div class="loading-screen" v-if="isLoading">
+				<div class="loading-screen__loader">Loading...</div>
+			</div>
+
+			<transition
+				name="modal-animation"
+			>
+				<div
+					class="modal"
+					v-if="isMoreModalOpen"
+				>
+					<!-- <transition
+						name="modal__content-animation"
+					> -->
+						<div class="modal__content">
+							<h1>{{ items[globeKey].name }}</h1>
+							<div class="modal__field">Artist: {{ items[globeKey].artist }}</div>
+							<div class="modal__field">Year: {{ items[globeKey].year }}</div>
+							<div class="modal__field">Language: {{ items[globeKey].language }}</div>
+							<div class="heading-divider"></div>
+							<img v-bind:src="items[globeKey].imageUrl" />
+							<div v-html="items[globeKey].content"></div>
+						</div>
+				<!-- </transition> -->
+
+					<!-- <a v-bind:href="items[globeKey].url" class="button modal-button modal-button--content" target="_blank" tabindex="0">View record</a> -->
+				</div>
+			</transition>
+
+			<!-- <transition
+				name="modal-animation"
+			>
+				<div
+					class="modal modal--about"
+					v-if="isAboutModalOpen"
+				>
+					<div class="modal__content">
+						<button
+							class="button modal-button modal-button--close"
+							v-on:click="toggleAboutModal"
+							v-if="isAboutModalOpen"
+						>
+							<span>Close</span>
+						</button>
+
+						<h1>About</h1>
+						<div class="heading-divider"></div>
+						<p>The State Library of NSW owns a stunning collection of maps from the 17th and 18th centuries. Normally under lock and key in our underground stacks, <strong>Meridian</strong> brings these artefacts to life as interactive 3D globes.</p>
+
+						<p>Touch or drag the mouse to pan, pinch or use the scrollwheel to zoom.</p>
+
+						<p>Many thanks goes to Bjørn Sandvik from <a href="http://mastermaps.com">mastermaps.com</a>. His <a href="http://blog.mastermaps.com/2013/09/creating-webgl-earth-with-threejs.html">tutorial</a> provided the basis for this project.</p>
+
+						<p>In addition, David Rumsey has kindly given us permission to use his unprojected images of the <a
+								href="https://www.davidrumsey.com/luna/servlet/detail/RUMSEY~8~1~288576~90060319:Composite--Unprojected--Geographic-?qvq=w4s:/what%2FGlobe%2Bgores%2F;lc:RUMSEY~8~1&mi=5&trs=42#">Coronelli
+								Terrestrial Map</a> and <a
+								href="https://www.davidrumsey.com/luna/servlet/detail/RUMSEY~8~1~327948~90096567:Composite--Unprojected--Geographic-?sort=pub_list_no_initialsort%2Cpub_list_no_initialsort%2Cpub_date%2Cpub_date&qvq=q:10570.000;sort:pub_list_no_initialsort%2Cpub_list_no_initialsort%2Cpub_date%2Cpub_date;lc:RUMSEY~8~1&mi=1&trs=42">Coronelli
+								Celestial Map</a>.
+
+						<p>Read about how this project was created and check out the source code below:</p>
+						<br/>
+
+						<a href="http://dxlab.sl.nsw.gov.au/making-meridian/" class="button" tabindex="0">Read blog post</a><br/><br/>
+						<a href="https://github.com/slnsw/dxlab-meridian" class="button" tabindex="0">Github Source Code</a>
+					</div>
+				</div>
+			</transition> -->
+
+			<button
+				class="button modal-button modal-button--about"
+				v-on:click="toggleMoreModal"
+				v-cloak
+			>
+				<span v-if="isMoreModalOpen">Close</span>
+				<span v-else="!isMoreModalOpen">More info</span>
+			</button>
+<!-- 
+			<button
+				class="button modal-button modal-button--about"
+				v-bind:class="{ 'modal-button--about--is-hidden': isMoreModalOpen }"
+				v-on:click="toggleAboutModal"
+			>About</button> -->
+		</div>
+
+		<div id="webgl"></div>
+
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.20.2/TweenLite.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/61/three.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.4.4/vue.min.js"></script>
+		<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.4.4/vue.js"></script> -->
+		<script src="./js/Detector.js"></script>
+		<script src="./js/TrackballControls.js"></script>
+		<script src="./js/app.js"></script>
+
+		<script>
+		  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+		  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+		  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+		  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+		  ga('create', '@@GOOGLE_ANALYTICS_ID', 'auto');
+		  ga('send', 'pageview');
+		</script>
+	</body>
+</html>
