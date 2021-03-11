@@ -2,7 +2,7 @@
   "name": "dxlab-meridian",
   "version": "0.0.1",
   "engines": {
-    "node": "~10"
+    "node": ">=12.0.0"
   },
   "description": "The State Library of NSW's unique collection of 17th century maps reimagined as interactive 3D globes.",
   "main": "index.js",

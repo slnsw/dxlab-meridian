@@ -1,14 +1,14 @@
 (function () {
 	// Get current version from URL
-  let version = false;
+  let displayType = false;
   if (window.location.pathname === '/coronelli-t.html') {
-    version = 'coronelli-t';
+    displayType = "coronelli-t";
   }
   if (window.location.pathname === '/coronelli-c.html') {
-    version = 'coronelli-c';
+    displayType = "coronelli-c";
   }
   if (window.location.pathname === '/mapsroom.html') {
-    version = 'mapsroom';
+    displayType = "mapsroom";
   }
 
   // Get current globe slug from URL
@@ -16,30 +16,29 @@
 		? getQueryVariable('globe')
 		: 'miranda';
 
-    function resetOnIdle(ms) {
-      var t;
-      window.onload = resetTimer;
-      window.onmousemove = resetTimer;
-      window.onmousedown = resetTimer;  // catches touchscreen presses as well      
-      window.ontouchstart = resetTimer; // catches touchscreen swipes as well 
-      window.onclick = resetTimer;      // catches touchpad clicks as well
-      window.onkeydown = resetTimer;   
-      window.addEventListener('scroll', resetTimer, true); // improved; see comments
-  
-      function resetPage() {
-          // your function for too long inactivity goes here
-          // e.g. window.location.href = 'logout.php';
-          window.history.go()
-      }
-  
-      function resetTimer() {
-          clearTimeout(t);
-          t = setTimeout(resetPage, ms);  // time is in milliseconds
-      }
+  function resetOnIdle(ms) {
+    var t;
+    window.onload = resetTimer;
+    window.onmousemove = resetTimer;
+    window.onmousedown = resetTimer;  // catches touchscreen presses as well      
+    window.ontouchstart = resetTimer; // catches touchscreen swipes as well 
+    window.onclick = resetTimer;      // catches touchpad clicks as well
+    window.onkeydown = resetTimer;   
+    window.addEventListener("scroll", resetTimer, true);
+
+    function resetPage() {
+			// reload the page
+			window.history.go();
+		}
+
+    function resetTimer() {
+        clearTimeout(t);
+        t = setTimeout(resetPage, ms);  // time is in milliseconds
+    }
   }
-  if (version) {
-    resetOnIdle(30000);
-  }
+  if (displayType !== false) {
+		resetOnIdle(30000);
+	}
 
 	// Params
 	var radius = 0.5;
@@ -102,58 +101,59 @@
 		},
 	};
   
-  if (version === 'coronelli-t') {
-    globeKey = 'coronelli1';
-    globeConfigs = {
-      coronelli1: {
-        name: 'Coronelli Terrestrial Globe',
-        radius: radius,
-        segments: segments,
-        map: './images/coronelli-terrestrial-map-unprojected-4000px.jpg',
-        bumpMap: './images/coronelli-terrestrial-map-unprojected-4000px-bump.gif',
-        bumpScale: 0.0005,
-        content:
-          '<p>This set of 24 gores and 2 polar calottes were printed from copper engravings in 1693. Italian cartographer Vincenzo Maria Coronelli began the engravings for the 110 cm globes in 1688 following the success of the  two large 4 metre globes produced for King Louis XIV in the early 1680s.</p>',
-        imageUrl: './images/coronelli-terrestrial-map-original.jpg',
-        artist: 'Vincenzo Maria Coronelli',
-        year: '1693',
-        language: 'Italian',
-        url: 'https://collection.sl.nsw.gov.au/record/74VvAy5EdPgg',
-        credit: 'David Rumsey',
-      }
-    };
-  };
+  if (displayType === "coronelli-t") {
+		globeKey = "coronelli1";
+		globeConfigs = {
+			coronelli1: {
+				name: "Coronelli Terrestrial Globe",
+				radius: radius,
+				segments: segments,
+				map: "./images/coronelli-terrestrial-map-unprojected-4000px.jpg",
+				bumpMap:
+					"./images/coronelli-terrestrial-map-unprojected-4000px-bump.gif",
+				bumpScale: 0.0005,
+				content:
+					"<p>This set of 24 gores and 2 polar calottes were printed from copper engravings in 1693. Italian cartographer Vincenzo Maria Coronelli began the engravings for the 110 cm globes in 1688 following the success of the  two large 4 metre globes produced for King Louis XIV in the early 1680s.</p>",
+				imageUrl: "./images/coronelli-terrestrial-map-original.jpg",
+				artist: "Vincenzo Maria Coronelli",
+				year: "1693",
+				language: "Italian",
+				url: "https://collection.sl.nsw.gov.au/record/74VvAy5EdPgg",
+				credit: "David Rumsey",
+			},
+		};
+	};
   
-  if (version === 'coronelli-c') {
-    globeKey = 'coronelli2';
-    globeConfigs = {
-      coronelli2: {
-        name: 'Coronelli Celestial Globe',
-        radius: radius,
-        segments: segments,
-        map: './images/coronelli-celestial-map-unprojected-4000px.jpg',
-        bumpMap: './images/coronelli-celestial-map-unprojected-4000px-bump.jpg',
-        bumpScale: 0.001,
-        content:
-          '<p>Vincenzo Coronelli published the gores for this celestial globe in 1693. They were printed in Paris by Jean Baptiste Nolin, the engraver to the King of France.</p><p>Coronelli designed this globe to make the observer feel as though they were looking into the sky from the earth. The engraving is incredibly detailed with the names of the constellations written in Latin, Italian, French, Greek, Arabic.</p><p>Comets are included with little circles of stars and the dates when they appeared. Despite the elegant and accomplished production, Coronelli’s lack of attention to scientific details places it as both a high point and low point of globe production in the late seventeenth century.</p>',
-        imageUrl: './images/coronelli-celestial-map-original.jpg',
-        artist: 'Vincenzo Maria Coronelli',
-        year: '1693',
-        language: 'Italian',
-        url: 'https://collection.sl.nsw.gov.au/record/74VvABRw02K3',
-        credit: 'David Rumsey',
-      },
-    };
-  };
+  if (displayType === "coronelli-c") {
+		globeKey = "coronelli2";
+		globeConfigs = {
+			coronelli2: {
+				name: "Coronelli Celestial Globe",
+				radius: radius,
+				segments: segments,
+				map: "./images/coronelli-celestial-map-unprojected-4000px.jpg",
+				bumpMap: "./images/coronelli-celestial-map-unprojected-4000px-bump.jpg",
+				bumpScale: 0.001,
+				content:
+					"<p>Vincenzo Coronelli published the gores for this celestial globe in 1693. They were printed in Paris by Jean Baptiste Nolin, the engraver to the King of France.</p><p>Coronelli designed this globe to make the observer feel as though they were looking into the sky from the earth. The engraving is incredibly detailed with the names of the constellations written in Latin, Italian, French, Greek, Arabic.</p><p>Comets are included with little circles of stars and the dates when they appeared. Despite the elegant and accomplished production, Coronelli’s lack of attention to scientific details places it as both a high point and low point of globe production in the late seventeenth century.</p>",
+				imageUrl: "./images/coronelli-celestial-map-original.jpg",
+				artist: "Vincenzo Maria Coronelli",
+				year: "1693",
+				language: "Italian",
+				url: "https://collection.sl.nsw.gov.au/record/74VvABRw02K3",
+				credit: "David Rumsey",
+			},
+		};
+	};
    
 
 	// Set up Vue instance
 	var vueApp = new Vue({
-		el: '#app',
+		el: "#app",
 		data: {
 			items: globeConfigs,
 			globeKey: globeKey,
-      version: version,
+			// version: version,
 			title: null,
 			content: null,
 			year: null,
@@ -191,13 +191,12 @@
 					if (history.pushState) {
 						var newurl =
 							window.location.protocol +
-							'//' +
+							"//" +
 							window.location.host +
 							window.location.pathname +
-							'?globe=' +
-							newGlobeKey; // +
-              // (version ? '&version=' + version : '');
-						window.history.pushState({ path: newurl }, '', newurl);
+							"?globe=" +
+							newGlobeKey;
+						window.history.pushState({ path: newurl }, "", newurl);
 					}
 				}
 

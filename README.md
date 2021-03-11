@@ -5,7 +5,7 @@
 - created three special versions for exhibition and maps room display
 - one at /coronelli-c.html which displays only the Celestial Coronelli
 - one at /coronelli-t.html which displays only the Terestrial Coronelli
-- one st exhibition.html which displays all three but has links to external places removed
+- one st mapsroom.html which displays all three but has links to external places removed
 - these three versions all have an idle timer that resets the page and various UI reductions
 
 ## Introduction
