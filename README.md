@@ -1,5 +1,13 @@
 # DX Lab: Meridian
 
+## Latest update March 2021
+
+- created three special versions for exhibition and maps room display
+- one at /coronelli-c.html which displays only the Celestial Coronelli
+- one at /coronelli-t.html which displays only the Terestrial Coronelli
+- one st exhibition.html which displays all three but has links to external places removed
+- these three versions all have an idle timer that resets the page and various UI reductions
+
 ## Introduction
 
 The State Library of NSW owns a stunning collection of maps from the 17th and 18th centuries. Normally under lock and key in our underground stacks, Meridian brings these artefacts to life as interactive 3D globes.
