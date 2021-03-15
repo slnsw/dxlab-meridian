@@ -1,44 +1,20 @@
 (function () {
 	// Get current version from URL
-  let displayType = false;
-  if (window.location.pathname === '/coronelli-t.html') {
-    displayType = "coronelli-t";
-  }
-  if (window.location.pathname === '/coronelli-c.html') {
-    displayType = "coronelli-c";
-  }
-  if (window.location.pathname === '/mapsroom.html') {
-    displayType = "mapsroom";
-  }
-
-  // Get current globe slug from URL
-	var globeKey = getQueryVariable('globe')
-		? getQueryVariable('globe')
-		: 'miranda';
-
-  function resetOnIdle(ms) {
-    var t;
-    window.onload = resetTimer;
-    window.onmousemove = resetTimer;
-    window.onmousedown = resetTimer;  // catches touchscreen presses as well      
-    window.ontouchstart = resetTimer; // catches touchscreen swipes as well 
-    window.onclick = resetTimer;      // catches touchpad clicks as well
-    window.onkeydown = resetTimer;   
-    window.addEventListener("scroll", resetTimer, true);
-
-    function resetPage() {
-			// reload the page
-			window.history.go();
-		}
-
-    function resetTimer() {
-        clearTimeout(t);
-        t = setTimeout(resetPage, ms);  // time is in milliseconds
-    }
-  }
-  if (displayType !== false) {
-		resetOnIdle(30000);
+	var displayType = false;
+	if (window.location.pathname === "/coronelli-t.html") {
+		displayType = "coronelli-t";
 	}
+	if (window.location.pathname === "/coronelli-c.html") {
+		displayType = "coronelli-c";
+	}
+	if (window.location.pathname === "/mapsroom.html") {
+		displayType = "mapsroom";
+	}
+
+	// Get current globe slug from URL
+	var globeKey = getQueryVariable("globe")
+		? getQueryVariable("globe")
+		: "miranda";
 
 	// Params
 	var radius = 0.5;
@@ -51,57 +27,57 @@
 	var disableControls = false;
 
 	// Globe configurations
-  let globeConfigs = {
+	var globeConfigs = {
 		miranda: {
 			name: "Miranda's World Map",
 			radius: radius,
 			segments: segments,
-			map: './images/miranda-map-unprojected-4000px.jpg',
-			bumpMap: './images/miranda-map-unprojected-4000px-bump.gif',
+			map: "./images/miranda-map-unprojected-4000px.jpg",
+			bumpMap: "./images/miranda-map-unprojected-4000px-bump.gif",
 			bumpScale: 0.0008,
 			content:
-				'<p>This manuscript map was produced in Lisbon in 1706, using a cylindrical projection. The coastlines of the Australian continent are duplicated on either side of the map so that when the map is wrapped around a globe, the edges overlap in line with the east coast of Australia.</p>',
-			imageUrl: './images/miranda-map-original.jpg',
-			artist: 'Joseph Da Costa e Miranda',
-			year: '1706',
-			language: 'Portuguese',
-			url: 'https://collection.sl.nsw.gov.au/record/74VvkA2dEL83',
+				"<p>This manuscript map was produced in Lisbon in 1706, using a cylindrical projection. The coastlines of the Australian continent are duplicated on either side of the map so that when the map is wrapped around a globe, the edges overlap in line with the east coast of Australia.</p>",
+			imageUrl: "./images/miranda-map-original.jpg",
+			artist: "Joseph Da Costa e Miranda",
+			year: "1706",
+			language: "Portuguese",
+			url: "https://collection.sl.nsw.gov.au/record/74VvkA2dEL83",
 		},
 		coronelli1: {
-			name: 'Coronelli Terrestrial Globe',
+			name: "Coronelli Terrestrial Globe",
 			radius: radius,
 			segments: segments,
-			map: './images/coronelli-terrestrial-map-unprojected-4000px.jpg',
-			bumpMap: './images/coronelli-terrestrial-map-unprojected-4000px-bump.gif',
+			map: "./images/coronelli-terrestrial-map-unprojected-4000px.jpg",
+			bumpMap: "./images/coronelli-terrestrial-map-unprojected-4000px-bump.gif",
 			bumpScale: 0.0005,
 			content:
-				'<p>This set of 24 gores and 2 polar calottes were printed from copper engravings in 1693. Italian cartographer Vincenzo Maria Coronelli began the engravings for the 110 cm globes in 1688 following the success of the  two large 4 metre globes produced for King Louis XIV in the early 1680s.</p>',
-			imageUrl: './images/coronelli-terrestrial-map-original.jpg',
-			artist: 'Vincenzo Maria Coronelli',
-			year: '1693',
-			language: 'Italian',
-			url: 'https://collection.sl.nsw.gov.au/record/74VvAy5EdPgg',
-			credit: 'David Rumsey',
+				"<p>This set of 24 gores and 2 polar calottes were printed from copper engravings in 1693. Italian cartographer Vincenzo Maria Coronelli began the engravings for the 110 cm globes in 1688 following the success of the  two large 4 metre globes produced for King Louis XIV in the early 1680s.</p>",
+			imageUrl: "./images/coronelli-terrestrial-map-original.jpg",
+			artist: "Vincenzo Maria Coronelli",
+			year: "1693",
+			language: "Italian",
+			url: "https://collection.sl.nsw.gov.au/record/74VvAy5EdPgg",
+			credit: "David Rumsey",
 		},
 		coronelli2: {
-			name: 'Coronelli Celestial Globe',
+			name: "Coronelli Celestial Globe",
 			radius: radius,
 			segments: segments,
-			map: './images/coronelli-celestial-map-unprojected-4000px.jpg',
-			bumpMap: './images/coronelli-celestial-map-unprojected-4000px-bump.jpg',
+			map: "./images/coronelli-celestial-map-unprojected-4000px.jpg",
+			bumpMap: "./images/coronelli-celestial-map-unprojected-4000px-bump.jpg",
 			bumpScale: 0.001,
 			content:
-				'<p>Vincenzo Coronelli published the gores for this celestial globe in 1693. They were printed in Paris by Jean Baptiste Nolin, the engraver to the King of France.</p><p>Coronelli designed this globe to make the observer feel as though they were looking into the sky from the earth. The engraving is incredibly detailed with the names of the constellations written in Latin, Italian, French, Greek, Arabic.</p><p>Comets are included with little circles of stars and the dates when they appeared. Despite the elegant and accomplished production, Coronelli’s lack of attention to scientific details places it as both a high point and low point of globe production in the late seventeenth century.</p>',
-			imageUrl: './images/coronelli-celestial-map-original.jpg',
-			artist: 'Vincenzo Maria Coronelli',
-			year: '1693',
-			language: 'Italian',
-			url: 'https://collection.sl.nsw.gov.au/record/74VvABRw02K3',
-			credit: 'David Rumsey',
+				"<p>Vincenzo Coronelli published the gores for this celestial globe in 1693. They were printed in Paris by Jean Baptiste Nolin, the engraver to the King of France.</p><p>Coronelli designed this globe to make the observer feel as though they were looking into the sky from the earth. The engraving is incredibly detailed with the names of the constellations written in Latin, Italian, French, Greek, Arabic.</p><p>Comets are included with little circles of stars and the dates when they appeared. Despite the elegant and accomplished production, Coronelli’s lack of attention to scientific details places it as both a high point and low point of globe production in the late seventeenth century.</p>",
+			imageUrl: "./images/coronelli-celestial-map-original.jpg",
+			artist: "Vincenzo Maria Coronelli",
+			year: "1693",
+			language: "Italian",
+			url: "https://collection.sl.nsw.gov.au/record/74VvABRw02K3",
+			credit: "David Rumsey",
 		},
 	};
-  
-  if (displayType === "coronelli-t") {
+
+	if (displayType === "coronelli-t") {
 		globeKey = "coronelli1";
 		globeConfigs = {
 			coronelli1: {
@@ -122,9 +98,9 @@
 				credit: "David Rumsey",
 			},
 		};
-	};
-  
-  if (displayType === "coronelli-c") {
+	}
+
+	if (displayType === "coronelli-c") {
 		globeKey = "coronelli2";
 		globeConfigs = {
 			coronelli2: {
@@ -144,8 +120,7 @@
 				credit: "David Rumsey",
 			},
 		};
-	};
-   
+	}
 
 	// Set up Vue instance
 	var vueApp = new Vue({
@@ -153,7 +128,6 @@
 		data: {
 			items: globeConfigs,
 			globeKey: globeKey,
-			// version: version,
 			title: null,
 			content: null,
 			year: null,
@@ -162,6 +136,8 @@
 			isMoreModalOpen: false,
 			isAboutModalOpen: false,
 			isGlobeMenuOpen: false,
+			t: null,
+			userHasInteracted: false,
 		},
 		methods: {
 			changeGlobe: function (newGlobeKey) {
@@ -226,11 +202,54 @@
 			hideLoading: function () {
 				this.$data.isLoading = false;
 			},
+			resetOnIdle: function () {
+				window.onload = function () {this.resetTimerOnly()}.bind(this);
+				window.addEventListener("mousemove", function () {this.resetTimer()}.bind(this), true);
+				// catches touchscreen presses as well
+				window.addEventListener("mousedown", function () {this.resetTimer()}.bind(this), true);
+				// catches touchscreen swipes as well
+				window.addEventListener("touchstart",function () {this.resetTimer()}.bind(this), true);
+				// catches touchpad clicks as well
+				window.addEventListener("click", function () {this.resetTimer()}.bind(this), true);
+				window.addEventListener("keydown", function () {this.resetTimer()}.bind(this), true);
+				window.addEventListener("scroll", function () {this.resetTimer()}.bind(this), true);
+			},
+			resetPage: function () {
+				// reset globe to starting position
+				if (this.$data.userHasInteracted && camera) {
+					console.log('resetting globe after idle');
+					// window.history.go();
+					this.closeModals();
+					camera.position.z = 1.3;
+					camera.position.y = 0.2;
+					camera.position.x = 0;
+					camera.rotation.x = 0;
+					camera.rotation.y = 0;
+					camera.rotation.z = 0;
+					camera.up.x = 0;
+					camera.up.y = 1;
+					camera.up.z = 0;
+				}
+			},
+			resetTimerOnly: function () {
+				clearTimeout(this.$data.t);
+				this.$data.t = setTimeout(() => {this.resetPage()}, 30000); // time is in milliseconds
+			},
+			resetTimer: function () {
+				this.$data.userHasInteracted = true;
+				clearTimeout(this.$data.t);
+				this.$data.t = setTimeout(() => {this.resetPage()}, 30000); // time is in milliseconds
+			}
 		},
+    mounted: function () {
+      if (displayType !== false) {
+        setTimeout(this.resetOnIdle(), 300);
+      }
+    },
 	});
 
 	// Set up Three JS scene and objects
-	var webglEl = document.getElementById('webgl');
+	var webglEl = document.getElementById("webgl");
 
 	if (!Detector.webgl) {
 		Detector.addGetWebGLMessage(webglEl);
@@ -270,10 +289,10 @@
 
 	var controls = new THREE.TrackballControls(camera);
 
-	window.addEventListener('resize', onWindowResize, false);
+	window.addEventListener("resize", onWindowResize, false);
 
 	render();
-
+	// console.log(camera);
 	// ThreeJS Functions
 	function render() {
 		if (!disableControls) {
@@ -307,7 +326,7 @@
 	// load a image resource
 	loader.load(
 		// resource URL
-		'./images/miranda-map-unprojected-4000px.jpg',
+		"./images/miranda-map-unprojected-4000px.jpg",
 		// Function when resource is loaded
 		function (image) {
 			// do something with it
@@ -321,11 +340,11 @@
 		},
 		// Function called when download progresses
 		function (xhr) {
-			console.log((xhr.loaded / xhr.total) * 100 + '% loaded');
+			console.log((xhr.loaded / xhr.total) * 100 + "% loaded");
 		},
 		// Function called when download errors
 		function (xhr) {
-			console.log('An error happened');
+			console.log("An error happened");
 		}
 	);
 
@@ -336,7 +355,7 @@
 				map: THREE.ImageUtils.loadTexture(args.map),
 				bumpMap: THREE.ImageUtils.loadTexture(args.bumpMap),
 				bumpScale: args.bumpScale,
-				specular: new THREE.Color('grey'),
+				specular: new THREE.Color("grey"),
 			})
 		);
 	}
@@ -355,7 +374,7 @@
 		return new THREE.Mesh(
 			new THREE.SphereGeometry(radius, segments, segments),
 			new THREE.MeshBasicMaterial({
-				map: THREE.ImageUtils.loadTexture('./images/galaxy-starfield.png'),
+				map: THREE.ImageUtils.loadTexture("./images/galaxy-starfield.png"),
 				side: THREE.BackSide,
 			})
 		);
@@ -370,9 +389,9 @@
 	// Get query variable from URL
 	function getQueryVariable(variable) {
 		var query = window.location.search.substring(1);
-		var vars = query.split('&');
+		var vars = query.split("&");
 		for (var i = 0; i < vars.length; i++) {
-			var pair = vars[i].split('=');
+			var pair = vars[i].split("=");
 			if (pair[0] == variable) {
 				return pair[1];
 			}
@@ -396,7 +415,7 @@
 	function fadeMesh(mesh, direction, options) {
 		options = options || {};
 		// set and check
-		var current = { percentage: direction == 'in' ? 1 : 0 },
+		var current = { percentage: direction == "in" ? 1 : 0 },
 			// this check is used to work with normal and multi materials.
 			mats = mesh.material.materials
 				? mesh.material.materials
@@ -407,13 +426,13 @@
 		// check to make sure originals exist
 		if (!originals) {
 			console.error(
-				'Fade error: originalOpacities not defined, use trackOriginalOpacities'
+				"Fade error: originalOpacities not defined, use trackOriginalOpacities"
 			);
 			return;
 		}
 		// tween opacity back to originals
 		var tweenOpacity = new TWEEN.Tween(current)
-			.to({ percentage: direction == 'in' ? 0 : 1 }, duration)
+			.to({ percentage: direction == "in" ? 0 : 1 }, duration)
 			.easing(easing)
 			.onUpdate(function () {
 				for (var i = 0; i < mats.length; i++) {
