@@ -217,7 +217,7 @@
 			resetPage: function () {
 				// reset globe to starting position
 				if (this.$data.userHasInteracted && camera) {
-					console.log('resetting globe after idle');
+					// console.log('resetting globe after idle');
 					// window.history.go();
 					this.closeModals();
 					camera.position.z = 1.3;
