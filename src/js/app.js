@@ -233,12 +233,12 @@
 			},
 			resetTimerOnly: function () {
 				clearTimeout(this.$data.t);
-				this.$data.t = setTimeout(() => {this.resetPage()}, 30000); // time is in milliseconds
+				this.$data.t = setTimeout(function () {this.resetPage()}.bind(this), 30000); // time is in milliseconds
 			},
 			resetTimer: function () {
 				this.$data.userHasInteracted = true;
 				clearTimeout(this.$data.t);
-				this.$data.t = setTimeout(() => {this.resetPage()}, 30000); // time is in milliseconds
+				this.$data.t = setTimeout(function () {this.resetPage()}.bind(this), 30000); // time is in milliseconds
 			}
 		},
     mounted: function () {
