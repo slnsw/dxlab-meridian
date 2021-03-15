@@ -1,14 +1,13 @@
 (function () {
 	// Get current version from URL
-	console.log(window.location.pathname);
 	var displayType = false;
-	if (window.location.pathname === "/coronelli-t.html") {
+	if (window.location.pathname.includes("/coronelli-t.html")) {
 		displayType = "coronelli-t";
 	}
-	if (window.location.pathname === "/coronelli-c.html") {
+	if (window.location.pathname.includes("/coronelli-c.html")) {
 		displayType = "coronelli-c";
 	}
-	if (window.location.pathname === "/mapsroom.html") {
+	if (window.location.pathname.includes("/mapsroom.html")) {
 		displayType = "mapsroom";
 	}
 
@@ -204,16 +203,54 @@
 				this.$data.isLoading = false;
 			},
 			resetOnIdle: function () {
-				window.onload = function () {this.resetTimerOnly()}.bind(this);
-				window.addEventListener("mousemove", function () {this.resetTimer()}.bind(this), true);
+				window.onload = function () {
+					this.resetTimerOnly();
+				}.bind(this);
+				window.addEventListener(
+					"mousemove",
+					function () {
+						this.resetTimer();
+					}.bind(this),
+					true
+				);
 				// catches touchscreen presses as well
-				window.addEventListener("mousedown", function () {this.resetTimer()}.bind(this), true);
+				window.addEventListener(
+					"mousedown",
+					function () {
+						this.resetTimer();
+					}.bind(this),
+					true
+				);
 				// catches touchscreen swipes as well
-				window.addEventListener("touchstart",function () {this.resetTimer()}.bind(this), true);
+				window.addEventListener(
+					"touchstart",
+					function () {
+						this.resetTimer();
+					}.bind(this),
+					true
+				);
 				// catches touchpad clicks as well
-				window.addEventListener("click", function () {this.resetTimer()}.bind(this), true);
-				window.addEventListener("keydown", function () {this.resetTimer()}.bind(this), true);
-				window.addEventListener("scroll", function () {this.resetTimer()}.bind(this), true);
+				window.addEventListener(
+					"click",
+					function () {
+						this.resetTimer();
+					}.bind(this),
+					true
+				);
+				window.addEventListener(
+					"keydown",
+					function () {
+						this.resetTimer();
+					}.bind(this),
+					true
+				);
+				window.addEventListener(
+					"scroll",
+					function () {
+						this.resetTimer();
+					}.bind(this),
+					true
+				);
 			},
 			resetPage: function () {
 				// reset globe to starting position
@@ -234,19 +271,29 @@
 			},
 			resetTimerOnly: function () {
 				clearTimeout(this.$data.t);
-				this.$data.t = setTimeout(function () {this.resetPage()}.bind(this), 30000); // time is in milliseconds
+				this.$data.t = setTimeout(
+					function () {
+						this.resetPage();
+					}.bind(this),
+					30000
+				); // time is in milliseconds
 			},
 			resetTimer: function () {
 				this.$data.userHasInteracted = true;
 				clearTimeout(this.$data.t);
-				this.$data.t = setTimeout(function () {this.resetPage()}.bind(this), 30000); // time is in milliseconds
+				this.$data.t = setTimeout(
+					function () {
+						this.resetPage();
+					}.bind(this),
+					30000
+				); // time is in milliseconds
+			},
+		},
+		mounted: function () {
+			if (displayType !== false) {
+				setTimeout(this.resetOnIdle(), 300);
 			}
 		},
-    mounted: function () {
-      if (displayType !== false) {
-        setTimeout(this.resetOnIdle(), 300);
-      }
-    },
 	});
 
 	// Set up Three JS scene and objects
