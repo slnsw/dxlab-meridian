@@ -1,5 +1,6 @@
 (function () {
 	// Get current version from URL
+	console.log(window.location.pathname);
 	var displayType = false;
 	if (window.location.pathname === "/coronelli-t.html") {
 		displayType = "coronelli-t";
