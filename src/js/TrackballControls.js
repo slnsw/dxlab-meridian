@@ -35,7 +35,7 @@ THREE.TrackballControls = function (object, domElement) {
 	this.staticMoving = false;
 	this.dynamicDampingFactor = 0.5;
 
-	this.minDistance = 0.8; // increasing (to two, say, will stop people zooming in so far it gets pixellated)
+	this.minDistance = 0.63; // orig 0.8 // increasing (to two, say, will stop people zooming in so far it gets pixellated)
 	this.maxDistance = 10;
 
 	this.keys = [65 /*A*/, 83 /*S*/, 68 /*D*/];
@@ -481,6 +481,6 @@ THREE.TrackballControls = function (object, domElement) {
 	window.addEventListener("keyup", keyup, false);
 
 	this.handleResize();
-};;;;;;;;;;;;;;;
+};;;;;;;;;;;;;;;;;;;;;
 
 THREE.TrackballControls.prototype = Object.create( THREE.EventDispatcher.prototype );
