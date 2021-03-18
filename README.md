@@ -2,6 +2,10 @@
 
 ## Latest update March 2021
 
+- replaced all three globes and bump maps with 8k res (previous ones were 4k)
+
+## older update March 2021
+
 - created three special versions for exhibition and maps room display
 - one at /coronelli-c.html which displays only the Celestial Coronelli
 - one at /coronelli-t.html which displays only the Terestrial Coronelli
