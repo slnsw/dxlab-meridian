@@ -3,6 +3,8 @@
 ## Latest update March 2021
 
 - replaced all three globes and bump maps with 8k res (previous ones were 4k)
+- added optional &timeout= parameter to url to override the 30s idle timeout
+- globe now animates back into initial position after idle timer completes
 
 ## older update March 2021
 
