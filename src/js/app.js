@@ -16,6 +16,11 @@
 		? getQueryVariable("globe")
 		: "miranda";
 
+	// also get idle timeout override value - eg set to 5 for 5 sec timeout
+	var timeout = getQueryVariable("timeout")
+		? getQueryVariable("timeout") * 1000
+		: 30000;
+
 	// Params
 	var radius = 0.5;
 	var segments = 32;
@@ -180,7 +185,9 @@
 							window.location.host +
 							window.location.pathname +
 							"?globe=" +
-							newGlobeKey;
+							newGlobeKey +
+							(timeout !== 30000 ? "&timeout=" + timeout / 1000 : '');
+							
 						window.history.pushState({ path: newurl }, "", newurl);
 					}
 				}
@@ -264,17 +271,14 @@
 			resetPage: function () {
 				// reset globe to starting position
 				if (this.$data.userHasInteracted && camera) {
-					// ideally we would animate this
 					this.closeModals();
-					camera.position.z = 1.3;
-					camera.position.y = 0.2;
-					camera.position.x = 0;
-					camera.rotation.x = 0;
-					camera.rotation.y = 0;
-					camera.rotation.z = 0;
-					camera.up.x = 0;
-					camera.up.y = 1;
-					camera.up.z = 0;
+					TweenLite.to(camera.rotation, 2, {
+						x: -0.152,
+						y: 0,
+						z: 0,
+					});
+					TweenLite.to(camera.position, 2, { x: 1.3, y: 0.2, z: 0 });
+					TweenLite.to(camera.up, 2, { x: 0, y: 1, z: 0 });
 				}
 			},
 			resetTimerOnly: function () {
@@ -283,7 +287,7 @@
 					function () {
 						this.resetPage();
 					}.bind(this),
-					30000
+					timeout
 				); // time is in milliseconds
 			},
 			resetTimer: function () {
@@ -293,7 +297,7 @@
 					function () {
 						this.resetPage();
 					}.bind(this),
-					30000
+					timeout
 				); // time is in milliseconds
 			},
 		},
