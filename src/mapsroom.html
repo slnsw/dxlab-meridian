@@ -38,12 +38,14 @@
 					<!-- <a href="http://dxlab.sl.nsw.gov.au"> -->
                         <img class="logo-dxlab" src="./images/logo-dxlab.png" alt="DX Lab website" />
                     <!-- </a> -->
+					<span class="logo-divider"></span>
+					<img class="logo-slnsw-up-top" src="./images/logo-slnsw-white-digital.png" alt="State Library of NSW website" />
                     <br/>
-					<h1 style="margin-top: 0.1em; font-size: 0.8em; font-weight: 400; letter-spacing: 0.2em; text-transform: uppercase; margin-bottom: 0em;">dxlab.sl.nsw.gov.au/Meridian</h1>
+					<h1 style="margin-top: 0.6em; font-size: 0.8em; font-weight: 400; letter-spacing: 0.2em; text-transform: uppercase; margin-bottom: 0em;">dxlab.sl.nsw.gov.au/Meridian</h1>
 				</div>
 				<div class="heading-divider"></div>
 
-				<nav>
+				<nav class="down-low">
 					<div class="menu-title" v-if="!isGlobeMenuOpen" v-on:click="toggleGlobeMenu">{{ items[globeKey].name }} <span>▼</span></div>
 
 					<div class="menu" v-bind:class="{ 'is-active-mobile': isGlobeMenuOpen }">
@@ -61,7 +63,7 @@
 			</header>
 
 			<!-- <a href="http://sl.nsw.gov.au"> -->
-                <img class="logo-slnsw" src="./images/logo-slnsw-white-digital.png" alt="State Library of NSW website" />
+                <!-- <img class="logo-slnsw" src="./images/logo-slnsw-white-digital.png" alt="State Library of NSW website" /> -->
             <!-- </a> -->
 
 			<div class="loading-screen" v-if="isLoading">
